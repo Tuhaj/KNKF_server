@@ -10,6 +10,9 @@ describe "Model User" do
 	end
 
 	it "User can be created" do
+		user = User.new
+		user.email = "zrazic@wp.pl"
+		user.full_name = "Piotrek"
 		expect { @user.save }.to change { User.count }.by 1
 	end
 
