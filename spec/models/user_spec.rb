@@ -23,8 +23,8 @@ describe "Model User" do
 	end
 
 	it "has association with application" do
-		@application.users.build
-		@application.users.should_not be_nil
+		@user.applications.build
+		@user.applications.should_not be_nil
 	end
 
 end
