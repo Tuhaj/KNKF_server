@@ -5,6 +5,7 @@ describe "Model User" do
 	before(:all) do
 		@user = User.new
 		@meeting = Meeting.new
+		@lecture = Lecture.new
 	end
 
 	it "User can be created" do
@@ -15,4 +16,9 @@ describe "Model User" do
 		@meeting.users.build
 		@meeting.users.should_not be_nil
 	end
+	it "has association with lecure" do
+		@lecture.users.build
+		@lecture.users.should_not be_nil
+	end
+
 end
