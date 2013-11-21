@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121095319) do
+ActiveRecord::Schema.define(version: 20131121095805) do
+
+  create_table "meetings", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "full_name"
@@ -19,8 +27,11 @@ ActiveRecord::Schema.define(version: 20131121095319) do
     t.string   "password"
     t.string   "password_confirmation"
     t.boolean  "knkf_member"
+    t.integer  "meeting_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["meeting_id"], name: "index_users_on_meeting_id"
 
 end
