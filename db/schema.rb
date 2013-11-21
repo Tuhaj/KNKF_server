@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121131631) do
+ActiveRecord::Schema.define(version: 20131121133639) do
+
+  create_table "admins", force: true do |t|
+    t.string   "full_name"
+    t.string   "password"
+    t.boolean  "approves_aplications"
+    t.boolean  "schedules_lectures"
+    t.boolean  "arranges_meetings"
+    t.boolean  "upgrades_users_to_organization_members"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "applications", force: true do |t|
+    t.text     "abstract"
+    t.text     "description"
+    t.string   "author_full_name"
+    t.boolean  "approved"
+    t.boolean  "membership"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applications", ["user_id"], name: "index_applications_on_user_id"
 
   create_table "lectures", force: true do |t|
     t.string   "subject"
