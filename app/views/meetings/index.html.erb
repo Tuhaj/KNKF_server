@@ -1,10 +1,12 @@
 <h1>Nadchodzące spotkania</h1>
-
+<%= link_to 'nowe spotkanie', meetings_form_path, class: "btn btn-link" %>
 <table class="table table-striped">
   <thead>
   <tr>
+
     <th>Nazwa</th>
     <th>Data</th>
+    <th>Link</th>
   </tr>
   </thead>
   <tbody>
@@ -12,6 +14,7 @@
       <tr>
         <td><%= meeting.name %></td>
         <td><%= meeting.date %></td>
+        <td><%= link_to "spotkanie nr #{meeting.id}", "/meetings/#{meeting.id}", class: "btn btn-link" %></td>
       </tr>
   <% end %>
   </tbody>

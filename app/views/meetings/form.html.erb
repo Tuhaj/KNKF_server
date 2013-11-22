@@ -1,1 +1,7 @@
-<%= tutaj wstaw form_helper %>
+
+<%= form_for @meeting, url: {action: "create"}, html: {class: "form-control"} do |f| %>
+  <%= f.text_field :name %>
+  <%= f.datetime_field :data %>
+  <%= f.text_area :description, size: "60x12" %>
+  <%= f.submit "Create" %>
+<% end %>

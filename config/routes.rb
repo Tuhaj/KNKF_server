@@ -1,11 +1,12 @@
 KNKF::Application.routes.draw do
   get "meetings/index"
-  get "meetings/:id" => "meetings#show"
   get "meetings/new"
   get "meetings/create"
   get "meetings/edit"
   get "meetings/update"
   get "meetings/destroy"
+  get "meetings/form"
+  get "meetings/:id" => "meetings#show"
   get "home/index"
   devise_for :users
   root :to => "home#index"
