@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121152749) do
+ActiveRecord::Schema.define(version: 20131122100619) do
 
   create_table "admins", force: true do |t|
     t.string   "full_name"
@@ -74,6 +74,27 @@ ActiveRecord::Schema.define(version: 20131121152749) do
 
   add_index "meetings_users", ["meeting_id"], name: "index_meetings_users_on_meeting_id"
   add_index "meetings_users", ["user_id"], name: "index_meetings_users_on_user_id"
+
+  create_table "readings", force: true do |t|
+    t.string   "author"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "votes_for"
+    t.boolean  "is_reworked"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "surveys", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "feedback"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "full_name"
