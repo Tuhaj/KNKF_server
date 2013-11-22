@@ -8,3 +8,6 @@
 
 
 Admin.create(full_name: "Piotr Zientara", approves_aplications: true, schedules_lectures: true, arranges_meetings: true, upgrades_users_to_organization_members: true)
+Meeting.create(name:"bedzie2", date:"2014-01-13")
+Meeting.create(name:"bedzie2", date:"2013-12-13")
+Meeting.create(name:"bylo", date:"2012-01-13")

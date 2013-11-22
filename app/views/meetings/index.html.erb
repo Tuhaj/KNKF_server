@@ -1,0 +1,21 @@
+<h1>Nadchodzące spotkania</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Nazwa</th>
+    <th>Data</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @meetings.each do |meeting| %>
+      <tr>
+        <td><%= meeting.name %></td>
+        <td><%= meeting.date %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Spotkania', home_index_path, class: "btn btn-link" %>
+
