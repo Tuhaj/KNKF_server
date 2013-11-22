@@ -11,8 +11,17 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 </head>
 <body>
+<navbar>
+<ul>
+<li><%= link_to 'Wyloguj', destroy_user_session_path, class: "btn btn-link", :method =>'delete' %></li>
+<li><%= link_to 'Spotkania', meetings_index_path, class: "btn btn-link" %></li>
+<li><%= link_to 'Strona główna', home_index_path, class: "btn btn-link" %></li>
+</ul>
+</navbar>
 
 <%= yield %>
 
 </body>
 </html>
+
+      
