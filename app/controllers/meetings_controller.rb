@@ -1,4 +1,8 @@
 class MeetingsController < ApplicationController
+
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user! , only: [:new,:show,:edit,:update,:my]
+
   def index
     @meetings = Meeting.where("date>=?", Date.today)
   end
@@ -28,9 +32,18 @@ class MeetingsController < ApplicationController
   end
 
   def destroy
+    @meeting.destroy
+  end
+
+  def my
   end
   
   private
+
+   def set_meeting
+      @meeting = Meeting.find(params[:id])
+    end
+
   
   def meeting_params
     params.require(:meeting).permit(:name, :description, :date)
