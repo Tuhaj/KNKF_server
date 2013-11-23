@@ -13,6 +13,12 @@ class MeetingsController < ApplicationController
   end
 
   def create
+    @meeting = Meeting.new(meeting_params)
+    if @meeting.save
+      redirect_to @meeting
+    else
+      render action: 'new'
+    end
   end
 
   def edit
@@ -22,5 +28,11 @@ class MeetingsController < ApplicationController
   end
 
   def destroy
+  end
+  
+  private
+  
+  def meeting_params
+    params.require(:meeting).permit(:name, :description, :date)
   end
 end
