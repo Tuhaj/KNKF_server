@@ -1,6 +1,6 @@
 
 
-<%= form_for Meeting.new, url: {action: "create"} do |f| %>
+<%= form_for @meeting, url: {action: "create"} do |f| %>
   
 <p>Proszę wypełnij formularz</p>
 <p> Nazwa spotkania: <%= f.text_field :name, html: {class: "form-control-static"} %> </p>
