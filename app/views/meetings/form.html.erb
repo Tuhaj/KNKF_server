@@ -1,20 +1,11 @@
-<br>
-<br>
 
-<div>
-<%= form_for Meeting.new, url: {action: "create"}, html: {class: "form-control"} do |f| %>
-  <div>
-  Nazwa spotkania: <%= f.text_field :name %>
-  </div>
-  <div>
-  Data: <%= f.datetime_field :date %>
-  </div> 
 
-  <div>
-  Opis: <%= f.text_area :description, size: "60x12" %>
-   </div>
-  <div>
-  <%= f.submit "Utwórz" %>
-   </div>
+<%= form_for Meeting.new, url: {action: "create"} do |f| %>
+  
+<p>Proszę wypełnij formularz</p>
+<p> Nazwa spotkania: <%= f.text_field :name, html: {class: "form-control-static"} %> </p>
+<p> Data: <%= f.datetime_field :date, html: {class: "form-control-static"}  %> </p>
+<p> Opis: <%= f.text_area :description, html: {class: "form-control-static"} %> </p>
+	  		<%= f.submit "Utwórz" %>
 <% end %>
-</div>
+
