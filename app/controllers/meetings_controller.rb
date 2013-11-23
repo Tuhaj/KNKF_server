@@ -39,10 +39,6 @@ class MeetingsController < ApplicationController
   def my
   end
 
-  def form
-    @meeting = Meeting.new
-  end
-  
   private
 
    def set_meeting
