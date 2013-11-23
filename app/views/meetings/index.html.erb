@@ -7,6 +7,7 @@
     <th>Nazwa</th>
     <th>Data</th>
     <th>Link</th>
+    <th>Usuń</th>
   </tr>
   </thead>
   <tbody>
@@ -15,6 +16,8 @@
         <td><%= meeting.name %></td>
         <td><%= meeting.date %></td>
         <td><%= link_to "spotkanie nr #{meeting.id}", "/meetings/#{meeting.id}", class: "btn btn-link" %></td>
+<!-- jesli jest adminem lub spotkanie jest dodane przeze mnie - dodac! -->
+        <td><%= link_to 'Usuń', meeting, class: "btn btn-link", :method =>'delete' %></td>
       </tr>
   <% end %>
   </tbody>

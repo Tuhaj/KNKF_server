@@ -33,6 +33,7 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
+    redirect_to @meeting
   end
 
   def my

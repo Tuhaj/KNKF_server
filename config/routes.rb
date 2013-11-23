@@ -4,7 +4,7 @@ KNKF::Application.routes.draw do
   get "meetings/create"
   get "meetings/edit"
   get "meetings/update"
-  get "meetings/destroy"
+  get "meetings/destroy" => "meetings#destroy"
   get "meetings/form"
   post "meetings/create"
   get "meetings/:id" => "meetings#show"
