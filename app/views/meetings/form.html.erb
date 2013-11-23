@@ -1,7 +1,20 @@
+<br>
+<br>
 
+<div>
 <%= form_for Meeting.new, url: {action: "create"}, html: {class: "form-control"} do |f| %>
-  <%= f.text_field :name %>
-  <%= f.datetime_field :date %>
-  <%= f.text_area :description, size: "60x12" %>
-  <%= f.submit "Create" %>
+  <div>
+  Nazwa spotkania: <%= f.text_field :name %>
+  </div>
+  <div>
+  Data: <%= f.datetime_field :date %>
+  </div> 
+
+  <div>
+  Opis: <%= f.text_area :description, size: "60x12" %>
+   </div>
+  <div>
+  <%= f.submit "Utwórz" %>
+   </div>
 <% end %>
+</div>

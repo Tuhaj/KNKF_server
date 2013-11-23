@@ -6,8 +6,10 @@ KNKF::Application.routes.draw do
   get "meetings/update"
   get "meetings/destroy"
   get "meetings/form"
+  post "meetings/create"
   get "meetings/:id" => "meetings#show"
   get "home/index"
+  resources :meetings
   devise_for :users
   root :to => "home#index"
   # The priority is based upon order of creation: first created -> highest priority.

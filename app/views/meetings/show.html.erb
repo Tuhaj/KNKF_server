@@ -1,4 +1,4 @@
-<h1>Spotkanie</h1>
+<h1>Spotkanie <%= @meeting.name %></h1>
 
 <table>
 	    <td><%= @meeting.name %></td>
@@ -6,4 +6,6 @@
         <td><%= @meeting.date %></td>
 </table>
 
+<%= link_to 'strona główna', home_index_path, class: "btn btn-link" %>
+<%= link_to 'Spotkania', meetings_index_path, class: "btn btn-link" %>
 
