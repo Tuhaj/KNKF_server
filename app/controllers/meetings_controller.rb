@@ -1,7 +1,7 @@
 class MeetingsController < ApplicationController
 #czy only jest dobre?
-  before_action :set_meeting, only: [:show, :edit, :update, :destroy, :add_me]
-  before_filter :authenticate_user! , only: [:new,:show,:edit,:update,:my, :add_me]
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy, :add_me, :remove_me]
+  before_filter :authenticate_user! , only: [:new,:show,:edit,:update,:my, :add_me, :remove_me]
 
   def index
     @meetings = Meeting.where("date>=?", Date.today)
@@ -40,8 +40,12 @@ class MeetingsController < ApplicationController
   end
 
   def add_me
-    #do poprawki
     @meeting.users << current_user
+    redirect_to @meeting
+  end
+  def remove_me
+    @meeting.users.destroy(current_user)
+    redirect_to @meeting
   end
 
   private

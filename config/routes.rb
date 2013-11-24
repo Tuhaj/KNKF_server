@@ -7,10 +7,10 @@ KNKF::Application.routes.draw do
   get "meetings/destroy" => "meetings#destroy"
   post "meetings/create"
   post "meetings/:id" => "meetings#add_me"
+  delete "meetings/:id" => "meetings#remove_me"
   get "meetings/my"
   get "meetings/:id" => "meetings#show"
   get "home/index"
-
   resources :meetings
   devise_for :users
   root :to => "home#index"

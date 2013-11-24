@@ -1,4 +1,4 @@
-<h1>Twoje spotkania</h1>
+<h1>Twoje15_ spotkania</h1>
 
 <table class="table table-striped">
   <thead>
@@ -16,7 +16,7 @@
         <td><%= meeting.name %></td>
         <td><%= meeting.date %></td>
         <td><%= link_to "spotkanie nr #{meeting.id}", "/meetings/#{meeting.id}", class: "btn btn-link" %></td>
-        <td><%= link_to 'wypisz się', meeting, class: "btn btn-link", :method =>'post' %></td>
+        <td><%= link_to 'wypisz się', "/meetings/#{meeting.id}", class: "btn btn-link", :method =>'delete' %></td>
       </tr>
   <% end %>
   </tbody>
