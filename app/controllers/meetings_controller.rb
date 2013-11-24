@@ -37,7 +37,6 @@ class MeetingsController < ApplicationController
   end
 
   def my
-    current_user.meetings
   end
 
   def add_me

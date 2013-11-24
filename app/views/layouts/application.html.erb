@@ -20,6 +20,7 @@
 
 <div class="form-group"><%= link_to "Zmień moje dane", edit_user_registration_path %></div>
 <div class="form-group"><%= link_to 'Spotkania', meetings_index_path, class: "btn btn-link" %></div>
+<div class="form-group"><%= link_to 'Moje spotkania', meetings_my_path, class: "btn btn-link" %></div>
 <div class="form-group"><%= link_to 'Wyloguj', destroy_user_session_path, class: "btn btn-link", :method =>'delete' %></div>
 
 <% end %>

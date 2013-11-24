@@ -6,6 +6,17 @@
         <td><%= @meeting.date %></td>
 </table>
 
+<h4>Zapisane osoby</h4>
+  <table>
+  <% @meeting.users.each do |a| %>
+      <tr>
+        <td><%= a.full_name %></td>
+        <td><%= a.degree %></td>
+      <tr>
+
+  <%end%>
+  </table>
+
 <%= link_to 'strona główna', home_index_path, class: "btn btn-link" %>
 <%= link_to 'Spotkania', meetings_index_path, class: "btn btn-link" %>
 

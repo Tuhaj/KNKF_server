@@ -18,8 +18,8 @@
         <td><%= meeting.date %></td>
         <td><%= link_to "spotkanie nr #{meeting.id}", "/meetings/#{meeting.id}", class: "btn btn-link" %></td>
 <!-- jesli jest adminem lub spotkanie jest dodane przeze mnie - dodac! -->
-        <td><%= link_to 'weź udział', meeting, class: "btn btn-link", :method =>'post' %></td>
-        <td><%= link_to 'Usuń', meetings_add_me, class: "btn btn-link", :method =>'delete' %></td>
+        <td><%= link_to 'weź udział', meetings,  class: "btn btn-link", :method =>'post' %></td>
+        <td><%= link_to 'Usuń', meeting, class: "btn btn-link", :method =>'delete' %></td>
       </tr>
   <% end %>
   </tbody>

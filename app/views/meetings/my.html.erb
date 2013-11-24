@@ -1,0 +1,23 @@
+<h1>Twoje spotkania</h1>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+
+    <th>Nazwa</th>
+    <th>Data</th>
+    <th>Link</th>
+    <th>Wypisz się</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% current_user.meetings.each do |meeting| %>
+      <tr>
+        <td><%= meeting.name %></td>
+        <td><%= meeting.date %></td>
+        <td><%= link_to "spotkanie nr #{meeting.id}", "/meetings/#{meeting.id}", class: "btn btn-link" %></td>
+        <td><%= link_to 'wypisz się', meeting, class: "btn btn-link", :method =>'post' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
