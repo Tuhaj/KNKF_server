@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-
+#czy only jest dobre?
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user! , only: [:new,:show,:edit,:update,:my]
 
@@ -37,6 +37,12 @@ class MeetingsController < ApplicationController
   end
 
   def my
+    current_user.meetings
+  end
+
+  def add_me
+    #do poprawki
+    @meeting.users << current_user
   end
 
   private
