@@ -7,5 +7,11 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :lectures
   has_many :applications
   has_many :surveys
+
+  after_create :send_welcome_mail
+
+  def send_welcome_mail
+		UserMailer.welcome_mail(self).deliver
+	end
   # attr_accessor :degree, :full_name
 end
