@@ -11,7 +11,8 @@ describe MeetingsController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      get 'show'
+      kant_meeting = Meeting.create(name: "Kant Meeting")
+      get 'show', :id =>kant_meeting.id
       response.should be_success
     end
   end
