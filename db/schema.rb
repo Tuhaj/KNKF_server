@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131122100619) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: true do |t|
     t.string   "full_name"
     t.string   "password"
@@ -35,7 +38,31 @@ ActiveRecord::Schema.define(version: 20131122100619) do
     t.datetime "updated_at"
   end
 
-  add_index "applications", ["user_id"], name: "index_applications_on_user_id"
+  add_index "applications", ["user_id"], name: "index_applications_on_user_id", using: :btree
+
+  create_table "bonus", id: false, force: true do |t|
+    t.string  "ename", limit: 10
+    t.string  "job",   limit: 9
+    t.integer "sal"
+    t.integer "comm"
+  end
+
+  create_table "dept", id: false, force: true do |t|
+    t.integer "deptno"
+    t.string  "dname",  limit: 14
+    t.string  "loc",    limit: 13
+  end
+
+  create_table "emp", id: false, force: true do |t|
+    t.integer "empno",               null: false
+    t.string  "ename",    limit: 10
+    t.string  "job",      limit: 9
+    t.integer "mgr"
+    t.date    "hiredate"
+    t.integer "sal"
+    t.integer "comm"
+    t.integer "deptno"
+  end
 
   create_table "lectures", force: true do |t|
     t.string   "subject"
@@ -54,8 +81,8 @@ ActiveRecord::Schema.define(version: 20131122100619) do
     t.datetime "updated_at"
   end
 
-  add_index "lectures_users", ["lecture_id"], name: "index_lectures_users_on_lecture_id"
-  add_index "lectures_users", ["user_id"], name: "index_lectures_users_on_user_id"
+  add_index "lectures_users", ["lecture_id"], name: "index_lectures_users_on_lecture_id", using: :btree
+  add_index "lectures_users", ["user_id"], name: "index_lectures_users_on_user_id", using: :btree
 
   create_table "meetings", force: true do |t|
     t.string   "name"
@@ -72,8 +99,8 @@ ActiveRecord::Schema.define(version: 20131122100619) do
     t.datetime "updated_at"
   end
 
-  add_index "meetings_users", ["meeting_id"], name: "index_meetings_users_on_meeting_id"
-  add_index "meetings_users", ["user_id"], name: "index_meetings_users_on_user_id"
+  add_index "meetings_users", ["meeting_id"], name: "index_meetings_users_on_meeting_id", using: :btree
+  add_index "meetings_users", ["user_id"], name: "index_meetings_users_on_user_id", using: :btree
 
   create_table "readings", force: true do |t|
     t.string   "author"
@@ -85,6 +112,12 @@ ActiveRecord::Schema.define(version: 20131122100619) do
     t.datetime "updated_at"
   end
 
+  create_table "salgrade", id: false, force: true do |t|
+    t.integer "grade"
+    t.integer "losal"
+    t.integer "hisal"
+  end
+
   create_table "surveys", force: true do |t|
     t.string   "title"
     t.text     "description"
@@ -94,7 +127,7 @@ ActiveRecord::Schema.define(version: 20131122100619) do
     t.datetime "updated_at"
   end
 
-  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id"
+  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "full_name"
@@ -113,8 +146,8 @@ ActiveRecord::Schema.define(version: 20131122100619) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["meeting_id"], name: "index_users_on_meeting_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["meeting_id"], name: "index_users_on_meeting_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
