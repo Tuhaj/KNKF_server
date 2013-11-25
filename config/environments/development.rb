@@ -1,5 +1,18 @@
 KNKF::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.action_mailer.raise_delivery_errors = true
+# Change mail delvery to either :smtp, :sendmail, :file,
+  :test
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+     enable_starttls_auto: true,
+     address: "smtp.mailgun.org",
+     port: 587,
+     domain: "knkf.pl",
+     authentication: "plain",
+     user_name: "postmaster@knkf.pl",
+     password: ENV["PASSWORD"]
+}
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

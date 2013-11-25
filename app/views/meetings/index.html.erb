@@ -1,6 +1,10 @@
 <h1>Nadchodzące spotkania</h1>
 <%= link_to 'nowe spotkanie', new_meeting_path, class: "btn btn-link" %>
 <table class="table table-striped">
+
+
+
+
   <thead>
   <tr>
 
@@ -12,7 +16,7 @@
   </tr>
   </thead>
   <tbody>
-  
+
   <% @meetings.each do |meeting| %>
       <tr>
         <td><%= meeting.name %></td>
