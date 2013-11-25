@@ -33,7 +33,7 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
-    redirect_to @meeting
+    render :index
   end
 
   def my
@@ -45,7 +45,7 @@ class MeetingsController < ApplicationController
   end
   def remove_me
     @meeting.users.destroy(current_user)
-    redirect_to @meeting
+    redirect_to meetings_my_path
   end
 
   private
