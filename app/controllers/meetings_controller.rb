@@ -33,7 +33,7 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
-    render :index
+    redirect_to meetings_index_path
   end
 
   def my
