@@ -22,6 +22,7 @@ class MeetingsController < ApplicationController
   end
 
   def create
+    puts params
     @meeting = Meeting.new(meeting_params)
     if @meeting.save
       redirect_to @meeting

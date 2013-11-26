@@ -37,9 +37,10 @@ describe MeetingsController do
 
   describe "GET 'create'" do
     it "returns http success" do
-      meeting = FactoryGirl.create(:meeting)
-      post 'create', params: {meeting: meeting}
-      response.should be_success
+      meeting = Meeting.new
+
+      post 'create', :meeting => {name: "Heidi", date:"12-12-12", description:"1231321"}
+      response.should redirect_to assigns(:meeting)
     end
   end
 
