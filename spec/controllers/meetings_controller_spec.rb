@@ -37,7 +37,8 @@ describe MeetingsController do
 
   describe "GET 'create'" do
     it "returns http success" do
-      get 'create'
+      meeting = FactoryGirl.create(:meeting)
+      post 'create', params: {meeting: meeting}
       response.should be_success
     end
   end
@@ -51,15 +52,15 @@ describe MeetingsController do
 
   describe "GET 'update'" do
     it "returns http success" do
-      get 'update'
+      patch 'update'
       response.should be_success
     end
   end
 
   describe "GET 'destroy'" do
     it "returns http success" do
-      meeting = Meeting.create! valid_attributes
-      get 'destroy'
+      meeting = FactoryGirl.create(:meeting)
+      delete 'destroy'
       response.should be_success
     end
   end
