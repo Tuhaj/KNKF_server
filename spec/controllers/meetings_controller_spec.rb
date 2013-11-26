@@ -1,7 +1,8 @@
 require 'spec_helper'
 
-describe MeetingsController do
 
+describe MeetingsController do
+  login_user
     # This should return the minimal set of attributes required to create a valid
   # Category. As you add validations to Category, be sure to
   # adjust the attributes here as well.
@@ -10,7 +11,7 @@ describe MeetingsController do
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CategoriesController. Be sure to keep this updated too.
-  let(:valid_session) { {} }
+  
 
   describe "GET 'index'" do
     it "returns http success" do
@@ -21,8 +22,8 @@ describe MeetingsController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      meeting = Meeting.create! valid_attributes
-      get 'show', {:id => meeting.to_param}, valid_session
+      meeting = FactoryGirl.create(:meeting)
+      get 'show', {:id => meeting.to_param}
       response.should be_success
     end
   end
@@ -57,6 +58,7 @@ describe MeetingsController do
 
   describe "GET 'destroy'" do
     it "returns http success" do
+      meeting = Meeting.create! valid_attributes
       get 'destroy'
       response.should be_success
     end
