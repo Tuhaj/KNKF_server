@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131122100619) do
+ActiveRecord::Schema.define(version: 20131126092857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,19 @@ ActiveRecord::Schema.define(version: 20131122100619) do
 
   add_index "meetings_users", ["meeting_id"], name: "index_meetings_users_on_meeting_id", using: :btree
   add_index "meetings_users", ["user_id"], name: "index_meetings_users_on_user_id", using: :btree
+
+  create_table "rails_admin_histories", force: true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      limit: 2
+    t.integer  "year",       limit: 8
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories", using: :btree
 
   create_table "readings", force: true do |t|
     t.string   "author"

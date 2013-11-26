@@ -1,4 +1,5 @@
 KNKF::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :meetings do
     post "add_me"
     delete "remove_me"
