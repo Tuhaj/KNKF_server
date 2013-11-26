@@ -1,10 +1,15 @@
 class MeetingsController < ApplicationController
 #czy only jest dobre?
-  before_action :set_meeting, only: [:show, :edit, :update, :destroy, :add_me, :remove_me]
-  before_filter :authenticate_user! , only: [:new,:show,:edit,:update,:my, :add_me, :remove_me]
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user! , only: [:new,:show,:edit,:update, :my, :add_me, :remove_me]
 
   def index
-    @meetings = Meeting.where("date>=?", Date.today)
+    @only_mine = params[:my]
+    if @only_mine
+      @meetings = current_user.meetings
+    else
+      @meetings = Meeting.where("date>=?", Date.today)
+    end
   end
 
   def show
@@ -33,19 +38,18 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
-    redirect_to meetings_index_path
+    redirect_to meetings_path
   end
 
-  def my
-  end
-
-  def add_me
+  def add_me      
+    @meeting = Meeting.find(params[:meeting_id])
     @meeting.users << current_user
     redirect_to @meeting
   end
   def remove_me
+    @meeting = Meeting.find(params[:meeting_id])
     @meeting.users.destroy(current_user)
-    redirect_to meetings_my_path
+    redirect_to my_meetings_path
   end
 
   private

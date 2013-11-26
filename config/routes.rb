@@ -1,17 +1,13 @@
 KNKF::Application.routes.draw do
-  get "meetings/index"
-  get "meetings/new"
-  get "meetings/create"
-  get "meetings/edit"
-  get "meetings/update"
-  get "meetings/destroy" => "meetings#destroy"
-  post "meetings/create"
-  post "meetings/:id" => "meetings#add_me"
-  delete "meetings/:id" => "meetings#remove_me"
-  get "meetings/my"
-  get "meetings/:id" => "meetings#show"
+  resources :meetings do
+    post "add_me"
+    delete "remove_me"
+    collection do
+      get "my" => "meetings#index", :my => true
+    end
+  end
+
   get "home/index"
-  resources :meetings
   devise_for :users
   root :to => "home#index"
   # The priority is based upon order of creation: first created -> highest priority.
