@@ -1,7 +1,7 @@
 class MeetingsController < ApplicationController
 #czy only jest dobre?
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user! , only: [:new,:show,:edit,:update, :my, :add_me, :remove_me]
+  before_filter :authenticate_user! , only: [:new, :show, :edit, :update, :my, :add_me, :remove_me]
 
   def index
     @only_mine = params[:my]

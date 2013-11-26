@@ -29,6 +29,7 @@ gem "devise", "~> 3.2.1"
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
+    gem 'factory_girl_rails'
 end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
