@@ -21,9 +21,9 @@ describe MeetingsController do
 
   describe "GET 'show'" do
     it "returns http success" do
-      meeting= Meeting.create! valid_attributes
-      get :show, {:id => meeting.to_param}, valid_session
-      assigns(:meeting).should eq(meeting)
+      meeting = Meeting.create! valid_attributes
+      get 'show', {:id => meeting.to_param}, valid_session
+      response.should be_success
     end
   end
 

@@ -1,5 +1,5 @@
 KNKF::Application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
   resources :meetings do
     post "add_me"
     delete "remove_me"
@@ -10,7 +10,12 @@ KNKF::Application.routes.draw do
 
   get "home/index"
   devise_for :users
+  devise_for :admins
   root :to => "home#index"
+
+
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

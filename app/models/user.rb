@@ -13,5 +13,9 @@ class User < ActiveRecord::Base
   def send_welcome_mail
 		UserMailer.welcome_mail(self).deliver
 	end
+
+  def current_admin
+    current_user && current_user.is_admin
+  end
   # attr_accessor :degree, :full_name
 end
