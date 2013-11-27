@@ -27,7 +27,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new(meeting_params)
     @meeting.made_by = current_user
     if @meeting.save
-      redirect_to @meeting
+      add_me
     else
       render action: 'new'
     end

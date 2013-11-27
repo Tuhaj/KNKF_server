@@ -12,7 +12,7 @@ class Meeting < ActiveRecord::Base
 	end
 #validations
 	def is_meeting_actual?
-		errors.add(:date, "data nie może być wcześniejsza niż dziś") if date < Date.today
+		errors.add(:date, " - podana data nie może być wcześniejsza niż dziś") if date < Date.today
 	end
 
 	def is_meeting_mine?(user)
