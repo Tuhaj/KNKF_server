@@ -24,7 +24,7 @@
       <tr>
         <td><%= meeting.name %></td>
         <td><%= meeting.date %></td>
-        <td><%= link_to "spotkanie nr #{meeting.id}", "/meetings/#{meeting.id}", class: "btn btn-link" %></td>
+        <td><%= link_to "spotkanie nr #{meeting.id}", meeting, class: "btn btn-link" %></td>
 <!-- jesli jest adminem lub spotkanie jest dodane przeze mnie - dodac! -->
         <% if meeting.is_user_in_meeting?(current_user) %>
         <td><%= link_to 'wypisz się', meeting_remove_me_path(meeting), class: "btn btn-link", :method =>'delete' %></td>

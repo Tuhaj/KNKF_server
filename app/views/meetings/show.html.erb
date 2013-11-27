@@ -1,17 +1,39 @@
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+
 <h1>Spotkanie <%= @meeting.name %></h1>
 
-<table>
-	    <td><%= @meeting.name %></td>
-	    <td><%= @meeting.description %></td>
-        <td><%= @meeting.date %></td>
-</table>
+
+<dl class="dl-horizontal">
+  <dd>Nazwa spotkania: <%= @meeting.name %></dd>
+  <dd>Opis: <%= @meeting.description %></dd>
+  <dd>Data: <%= @meeting.date %></dd>
+</dl>
 
 <h4>Zapisane osoby</h4>
-  <table>
+  <table class="table table-striped">
+    <thead>
+  <tr>
+
+    <th>Uczestnik</th>
+    <th>Stopień</th>
+    <th>Koło</th>
+    <th></th>
+  </tr>
+  </thead>
   <% @meeting.users.each do |a| %>
       <tr>
         <td><%= a.full_name %></td>
         <td><%= a.degree %></td>
+        <% if a.knkf_member? %>
+        <td>KNKF<td>
+        <% else %>
+        <td>gość<td>
+           <% if a == current_user %>
+        <td>wypisz się<td>
+        <% else %>
+        <td><td>
+        <% end %>
+        <% end %>
       <tr>
 
   <%end%>
