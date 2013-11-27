@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :applications
   has_many :surveys
 
+
   after_create :send_welcome_mail
 
   def send_welcome_mail
@@ -17,5 +18,5 @@ class User < ActiveRecord::Base
   def current_admin
     current_user && current_user.is_admin
   end
-  # attr_accessor :degree, :full_name
+
 end
