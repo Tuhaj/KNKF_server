@@ -13,7 +13,8 @@ RailsAdmin.config do |config|
 
   # RailsAdmin may need a way to know who the current user is]
   config.authenticate_with do
-    #authenticate_admin!
+
+    authenticate_admin!
   end
   config.current_user_method { current_admin } # auto-generated
 

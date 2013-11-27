@@ -15,5 +15,9 @@ class Meeting < ActiveRecord::Base
 		errors.add(:date, "data nie może być wcześniejsza niż dziś") if date < Date.today
 	end
 
+	def is_meeting_mine?(user)
+		made_by == user
+	end
+
 
 end

@@ -31,8 +31,11 @@
         <% else %>
          <td><%= link_to 'weź udział', meeting_add_me_path(meeting), class: "btn btn-link", :method =>'post' %></td>
         <%end %>
-
+      <% if meeting.is_meeting_mine?(current_user) %>
         <td><%= link_to 'Usuń', meeting, class: "btn btn-link", :method =>'delete' %></td>
+        <%else%>
+        <td></td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>
