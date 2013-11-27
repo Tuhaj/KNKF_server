@@ -16,7 +16,7 @@ class Meeting < ActiveRecord::Base
 	end
 
 	def is_meeting_mine?(user)
-		made_by == user
+		made_by == "#{user.id}"
 	end
 
 
