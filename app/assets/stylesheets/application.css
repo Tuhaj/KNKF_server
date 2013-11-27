@@ -20,3 +20,6 @@ padding: 2em;
 .image {
 	height: 17em;
 }
+.align_left {
+	text-align: left;
+}
