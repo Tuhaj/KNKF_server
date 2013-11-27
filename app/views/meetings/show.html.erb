@@ -29,7 +29,7 @@
         <% else %>
         <td>gość<td>
            <% if a == current_user %>
-        <td>wypisz się<td>
+        <td><%= link_to 'wypisz się', meeting_remove_me_path(@meeting), class: "btn btn-link", :method =>'delete' %><td>
         <% else %>
         <td><td>
         <% end %>
