@@ -1,13 +1,14 @@
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 
 <h1>Spotkanie <%= @meeting.name %></h1>
 
-
+<div>
 <dl class="dl-horizontal">
+
   <dd>Nazwa spotkania: <%= @meeting.name %></dd>
   <dd>Opis: <%= @meeting.description %></dd>
   <dd>Data: <%= @meeting.date %></dd>
 </dl>
+</div>
 
 <h4>Zapisane osoby</h4>
   <table class="table table-striped">
@@ -29,7 +30,7 @@
         <% else %>
         <td>gość<td>
            <% if a == current_user %>
-        <td><%= link_to 'wypisz się', meeting_remove_me_path(@meeting), class: "btn btn-link", :method =>'delete' %><td>
+        <td><%= link_to 'wypisz się', meeting_remove_me_path(@meeting), class: "btn btn-link", :method =>:delete %><td>
         <% else %>
         <td><td>
         <% end %>

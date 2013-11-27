@@ -3,9 +3,11 @@
 <%= form_for @meeting, url: {action: "create"} do |f| %>
   
 <p>Proszę wypełnij formularz</p>
-<p> Nazwa spotkania: <%= f.text_field :name, html: {class: "form-control-static"} %> </p>
-<p> Data: <%= f.datetime_field :date, html: {class: "form-control-static"}  %> </p>
-<p> Opis: <%= f.text_area :description, html: {class: "form-control-static"} %> </p>
+<p> Nazwa spotkania: <%= f.text_field :name, class: "form-control-static" %> </p>
+<p> Data: <%= f.text_field :date, class: "form-control-static datepicker" %> </p>
+<p> Opis: <%= f.text_area :description, class: "form-control-static" %> </p>
 	  		<%= f.submit "Utwórz" %>
+
+
 <% end %>
 

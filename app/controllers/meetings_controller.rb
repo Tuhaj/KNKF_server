@@ -17,7 +17,6 @@ class MeetingsController < ApplicationController
 
   def show
    @meeting = Meeting.find(params[:id])
-   render layout: false
   end
 
   def new
