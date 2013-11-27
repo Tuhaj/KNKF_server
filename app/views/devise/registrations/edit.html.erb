@@ -9,6 +9,12 @@
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
+  
+     <div><%= f.label "Imię i nazwisko" %><br />
+  <%= f.text_field :full_name %></div>
+
+   <div><%= f.label "Stopień lub tytuł naukowy" %><br />
+  <%= f.text_field :degree %></div>
 
   <div><%= f.label "Hasło" %> <i>(pozostaw puste, jeśli nie chcesz zmieniać)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
