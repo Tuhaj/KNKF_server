@@ -1,7 +1,10 @@
 class MeetingsController < ApplicationController
 #czy only jest dobre?
-  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user! , only: [:new, :show, :edit, :update, :my, :add_me, :remove_me]
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :find_meeting, only: [:add_me,:remove_me]
+
+
 
   def index
     @only_mine = params[:my]
@@ -43,12 +46,10 @@ class MeetingsController < ApplicationController
   end
 
   def add_me      
-    @meeting = Meeting.find(params[:meeting_id])
     @meeting.users << current_user
     redirect_to @meeting
   end
   def remove_me
-    @meeting = Meeting.find(params[:meeting_id])
     @meeting.users.destroy(current_user)
     redirect_to my_meetings_path
   end
@@ -58,6 +59,11 @@ class MeetingsController < ApplicationController
    def set_meeting
       @meeting = Meeting.find(params[:id])
     end
+   
+   def find_meeting
+      @meeting = Meeting.find(params[:meeting_id])
+   end 
+
 
   
   def meeting_params
