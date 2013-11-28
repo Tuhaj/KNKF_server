@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.ui.datepicker
+//= require jquery.ui.tooltip
+
+
 //= require_tree .
