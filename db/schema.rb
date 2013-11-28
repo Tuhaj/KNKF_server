@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20131127142835) do
     t.text     "description"
     t.integer  "votes_for"
     t.boolean  "is_reworked"
+    t.integer  "meeting_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

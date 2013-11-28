@@ -1,0 +1,3 @@
+<!--         <td><%= link_to reading.votes_for, readings_show_path(reading) %></td>
+        <td><%= link_to reading.meeting, meeting_show_path(reading) %></td>
+        <td><%= link_to 'Destroy', reading, method: :delete, data: { confirm: 'Are you sure?' } </td>%> -->

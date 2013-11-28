@@ -1,0 +1,23 @@
+<h1>Lektury</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Autor</th>
+      <th>Tytuł</th>
+      <th>Liczba głosów</th>
+      <th>Spotkanie</th>
+      <th>Skasuj</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @readings.each do |reading| %>
+      <tr>
+        <td><%= reading.author %></td>
+        <td><%= reading.title %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
