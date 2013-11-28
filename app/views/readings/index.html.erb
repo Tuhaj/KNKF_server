@@ -26,7 +26,11 @@
         <% else %>
         <td> Oczekuje spotkania</td>
         <% end %>
-        <td> <%= link_to 'Destroy', reading, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+        <% if reading.is_reading_mine?(current_user) == true %>
+          <td> <%= link_to 'Destroy', reading, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+          <% else %>
+          <td> </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
