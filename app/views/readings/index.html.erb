@@ -14,9 +14,15 @@
   <tbody>
     <% @readings.each do |reading| %>
       <tr>
-        <td><%= reading.author %></td>
-        <td><%= reading.title %></td>
-
+        <td> <%= reading.author %> </td>
+        <td> <%= reading.title %> </td>
+        <td> <%= link_to reading.votes_for, reading, class: "btn btn-link" %> </td>
+        <% if reading.meeting %>
+        <td><%= link_to reading.meeting.name, meeting_path(reading.meeting) %>   </td>
+        <% else %>
+        <td> Oczekuje spotkania</td>
+        <% end %>
+        <td> <%= link_to 'Destroy', reading, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
       </tr>
     <% end %>
   </tbody>

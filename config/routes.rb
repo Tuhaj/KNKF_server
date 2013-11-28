@@ -1,12 +1,6 @@
 KNKF::Application.routes.draw do
-  get "readings/index"
-  get "readings/show"
-  get "readings/new"
-  get "readings/create"
-  get "readings/edit"
-  get "readings/update"
-  get "readings/destroy"
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  resources :readings
   resources :meetings do
     post "add_me"
     delete "remove_me"
