@@ -15,22 +15,28 @@
 <body>
 
 <div>
-<%= image_tag('uw_logo.jpg', class: "image" )%>
+	<%= image_tag('uw_logo.jpg', class: "image" )%>
 </div>
-<% if user_signed_in? %>
+
+	<% if user_signed_in? %>
 <navbar class="navbar-form navbar-left">
-<div class="form-group"><%= link_to 'Strona główna', home_index_path, class: "btn btn-link" %></div>
-<div class="form-group"><%= link_to 'Spotkania', meetings_path, class: "btn btn-link" %></div>
-<div class="form-group"><%= link_to 'Moje spotkania', my_meetings_path, class: "btn btn-link" %></div>
+	<div class="form-group"><%= link_to 'Strona główna', home_index_path, class: "btn btn-link" %></div>
+	<div class="form-group"><%= link_to 'Spotkania', meetings_path, class: "btn btn-link" %></div>
+	<div class="form-group"><%= link_to 'Moje spotkania', my_meetings_path, class: "btn btn-link" %></div>
 </navbar>
 <navbar class="navbar-form navbar-left">
 </navbar>
 <navbar class="navbar-form navbar-right">
-<div class="form-group"><%= current_user.full_name %>, zalogowaliśmy Cię</div>
-<div class="form-group"><%= link_to "Zmień moje dane", edit_user_registration_path %></div>
-<div class="form-group"><%= link_to 'Wyloguj', destroy_user_session_path, class: "btn btn-link", :method =>'delete' %></div>
 
+<% if current_user.knkf_member %>
+	<div class="form-group"><%= current_user.full_name %>, zalogowaliśmy Cię, masz uprawnienia KNKF</div>
+	<% else %>
+	<div class="form-group"><%= current_user.full_name %>, zalogowaliśmy Cię, masz uprawnienia gościa</div>
 <% end %>
+	<div class="form-group"><%= link_to "Zmień moje dane", edit_user_registration_path %></div>
+	<div class="form-group"><%= link_to 'Wyloguj', destroy_user_session_path, class: "btn btn-link", :method =>'delete' %></div>
+
+	<% end %>
 
 
 </navbar>
