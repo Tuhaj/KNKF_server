@@ -6,8 +6,9 @@
   <li>Nazwa spotkania: <%= @meeting.name %></li>
   <li>Opis: <%= @meeting.description %></li>
   <li>Data: <%= @meeting.date %></li>
+  <% if @meeting.reading %>
   <li>Lektura: <%= @meeting.reading.author %> : <%=  @meeting.reading.title  %></li>
-
+  <% end %>
 
 </div>
 
