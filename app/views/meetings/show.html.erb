@@ -8,6 +8,10 @@
   <li>Data: <%= @meeting.date %></li>
   <% if @meeting.reading %>
   <li>Lektura: <%= @meeting.reading.author %> : <%=  @meeting.reading.title  %></li>
+  <% else %>
+  </br>
+  <div> Lektura nie została jeszcze ustalona </div>
+  <div class="btn"> Dodaj lekturę </div>
   <% end %>
 
 </div>

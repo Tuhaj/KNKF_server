@@ -1,10 +1,10 @@
 <h1>Lektury</h1>
 
 <% if current_user && current_user.knkf_member? %>
-  <%= link_to 'nowe lektura', new_reading_path, class: "btn btn-link" %>
+  <%= link_to 'nowa lektura', new_reading_path, class: "btn btn-link" %>
   <% end %>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Autor</th>
@@ -12,6 +12,7 @@
       <th>Liczba głosów</th>
       <th>Spotkanie</th>
       <th>Skasuj</th>
+      <th>Zagłosuj</th>
     </tr>
   </thead>
 
@@ -20,7 +21,7 @@
       <tr>
         <td> <%= reading.author %> </td>
         <td> <%= reading.title %> </td>
-        <td> <%= link_to reading.votes_for, reading, class: "btn btn-link" %> </td>
+        <td> <%= link_to reading.votes_for %> </td>
         <% if reading.meeting %>
         <td><%= link_to reading.meeting.name, meeting_path(reading.meeting) %>   </td>
         <% else %>
@@ -31,6 +32,7 @@
           <% else %>
           <td> </td>
         <% end %>
+        <td></td>
       </tr>
     <% end %>
   </tbody>

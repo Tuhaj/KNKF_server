@@ -8,7 +8,7 @@
   <%= link_to 'nowe spotkanie', new_meeting_path, class: "btn btn-link" %>
 <% end %>
 
-<table class="table table-striped">
+<table class="table table-bordered">
 
   <thead>
   <tr>
@@ -18,6 +18,8 @@
     <th>Link</th>
     <th>Weź udział</th>
     <th>Usuń</th>
+
+
   </tr>
   </thead>
   <tbody>
@@ -32,10 +34,10 @@
         <td><%= link_to 'wypisz się', meeting_remove_me_path(meeting), class: "btn btn-link", :method =>'delete' %></td>
         <% else %>
          <td><%= link_to 'weź udział', meeting_add_me_path(meeting), class: "btn btn-link", :method =>'post' %></td>
-        <%end %>
+        <% end %>
       <% if meeting.is_meeting_mine?(current_user) == true %>
         <td><%= link_to 'Usuń', meeting, class: "btn btn-link", :method =>'delete' %></td>
-        <%else%>
+        <% else %>
         <td></td>
         <% end %>
       </tr>
