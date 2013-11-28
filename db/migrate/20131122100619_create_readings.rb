@@ -6,6 +6,7 @@ class CreateReadings < ActiveRecord::Migration
       t.text :description
       t.integer :votes_for
       t.boolean :is_reworked
+      t.belongs_to :meeting
 
       t.timestamps
     end
