@@ -15,9 +15,18 @@ class ReadingsController < ApplicationController
 
   def create
     @reading = Reading.new(reading_params)
+    @reading.recomended_by = current_user
+    @reading.votes_for = 0
+    @reading.is_reworked = false
+    if @reading.save
+      redirect_to readings_path, :notice => "Udało się dodać lekturę"
+    else
+      render :new
+    end
   end
 
   def edit
+    @reading = Reading.find(params[:id])
   end
 
   def update
@@ -25,7 +34,7 @@ class ReadingsController < ApplicationController
 
   def destroy
     @reading.destroy
-    redirect_to readings_path
+    redirect_to readings_path, alert: "Usunąłem lekturę"
   end
 
   private

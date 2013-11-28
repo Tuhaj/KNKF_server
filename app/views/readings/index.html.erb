@@ -1,5 +1,9 @@
 <h1>Lektury</h1>
 
+<% if current_user && current_user.knkf_member? %>
+  <%= link_to 'nowe lektura', new_reading_path, class: "btn btn-link" %>
+  <% end %>
+
 <table>
   <thead>
     <tr>
