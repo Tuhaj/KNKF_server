@@ -13,6 +13,7 @@ KNKF::Application.routes.draw do
   devise_for :users
   devise_for :admins, path: :moderators
   root :to => "home#index"
+  post 'readings/:id' => 'readings#vote', as: :vote
 
 
 

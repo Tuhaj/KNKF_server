@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :applications
   has_many :surveys
 
-
+  before_create :set_vote
   after_create :send_welcome_mail
 
   def send_welcome_mail
@@ -19,6 +19,9 @@ class User < ActiveRecord::Base
     current_user && current_user.is_admin
   end
 
+  def set_vote
+      self.has_a_vote = true
+  end
   
 
 end
