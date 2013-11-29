@@ -43,7 +43,7 @@ class ReadingsController < ApplicationController
     @reading.votes_for = @reading.votes_for + 1 
     @reading.save!
     current_user.has_a_vote = false
-    current_user.voting_for = @reading
+    current_user.reading = @reading
     current_user.save!
     redirect_to readings_path, alert: "Oddałeś głos na autora: #{@reading.author} tytuł: #{@reading.title}"
   end
@@ -52,7 +52,7 @@ class ReadingsController < ApplicationController
     @reading.votes_for = @reading.votes_for - 1 
     @reading.save!
     current_user.has_a_vote = true
-    current_user.voting_for = nil
+    current_user.reading = nil
     current_user.save!
     redirect_to readings_path, alert: "Wycofano głos na autora: #{@reading.author} tytuł: #{@reading.title}"
   end

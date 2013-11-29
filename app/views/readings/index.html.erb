@@ -34,7 +34,7 @@
               <% if current_user.has_a_vote %>
                 <td> <%= link_to 'Zagłosuj', reading_vote_path(reading), method: :post %> </td>
               <% else %>
-                    <% if "#{reading.id}" == current_user.voting_for %>
+                    <% if reading == current_user.reading %>
                     <td> <%= link_to 'Wycofaj głos', reading_unvote_path(reading), method: :post %> </td>
                     <% else %>
                     <td></td>

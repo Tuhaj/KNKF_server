@@ -1,5 +1,6 @@
 class Reading < ActiveRecord::Base
 	belongs_to :meeting
+	has_many :users
 
 	before_destroy :cancel_votes_for_this_reading
 
@@ -9,8 +10,8 @@ class Reading < ActiveRecord::Base
 
 	def cancel_votes_for_this_reading
 		User.all.each do |user|
-  			if user.voting_for == "#{self}"
-  				user.voting_for = nil
+  			if user.reading == self
+  				user.reading = nil
   				user.has_a_vote = true
   				user.save!
   			end

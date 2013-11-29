@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20131129093907) do
     t.string   "degree"
     t.boolean  "knkf_member"
     t.integer  "meeting_id"
+    t.integer  "reading_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -170,6 +171,7 @@ ActiveRecord::Schema.define(version: 20131129093907) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["meeting_id"], name: "index_users_on_meeting_id", using: :btree
+  add_index "users", ["reading_id"], name: "index_users_on_reading_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

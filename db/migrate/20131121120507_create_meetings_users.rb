@@ -4,6 +4,7 @@ class CreateMeetingsUsers < ActiveRecord::Migration
       t.references :meeting, index: true
       t.references :user, index: true
       
+      
       t.timestamps
     end
   end

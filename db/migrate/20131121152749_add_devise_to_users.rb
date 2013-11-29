@@ -5,6 +5,7 @@ class AddDeviseToUsers < ActiveRecord::Migration
       t.string :degree
       t.boolean :knkf_member
       t.references :meeting, index: true
+      t.references :reading, index: true
 
 
       ## Database authenticatable
