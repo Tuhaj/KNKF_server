@@ -31,12 +31,12 @@
         <td><%= link_to "spotkanie nr #{meeting.id}", meeting, class: "btn btn-link" %></td>
 
         <% if meeting.is_user_in_meeting?(current_user) %>
-        <td><%= link_to 'wypisz się', meeting_remove_me_path(meeting), class: "btn btn-link", :method =>'delete' %></td>
+        <td><%= link_to 'wypisz się', meeting_remove_me_path(meeting), class: "btn btn-link", method: :delete %></td>
         <% else %>
-         <td><%= link_to 'weź udział', meeting_add_me_path(meeting), class: "btn btn-link", :method =>'post' %></td>
+         <td><%= link_to 'weź udział', meeting_add_me_path(meeting), class: "btn btn-link", method: :post %></td>
         <% end %>
       <% if meeting.is_meeting_mine?(current_user) == true %>
-        <td><%= link_to 'Usuń', meeting, class: "btn btn-link", :method =>'delete' %></td>
+        <td><%= link_to 'Usuń', meeting, class: "btn btn-link", method: :delete %></td>
         <% else %>
         <td></td>
         <% end %>

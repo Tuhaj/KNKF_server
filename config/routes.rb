@@ -2,7 +2,7 @@ KNKF::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :readings do
     post "vote"
-    # post "unvote"
+    post "unvote"
     end
   resources :meetings do
     post "add_me"
@@ -16,8 +16,6 @@ KNKF::Application.routes.draw do
   devise_for :users
   devise_for :admins, path: :moderators
   root :to => "home#index"
-  # post 'readings/:id' => 'readings#vote', as: :vote
-  # delete 'readings/:id' => 'readings#unvote', as: :unvote
 
 
 
