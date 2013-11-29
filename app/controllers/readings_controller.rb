@@ -1,8 +1,9 @@
 class ReadingsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :index, :show, :edit, :update, :vote, :unvote]
   before_action :set_reading, only: [:show, :edit, :update, :destroy] 
-  before_action :set_reading_id, only: [:vote, :unvote]
-  
+  before_action :set_reading_id, only: [:vote, :unvote, :end_voting]
+ 
+
   def index
     @readings = Reading.all
   end
@@ -57,14 +58,18 @@ class ReadingsController < ApplicationController
     redirect_to readings_path, alert: "Wycofano głos na autora: #{@reading.author} tytuł: #{@reading.title}"
   end
 
+    def end_voting
+      @meeting.Reading.all.where(votes_for: Reading.all.maximum(:votes_for))
+    end
+
   private
 
- def set_reading
+  def set_reading
       @reading = Reading.find(params[:id])
-    end
+  end
 def set_reading_id
       @reading = Reading.find(params[:reading_id])
-    end
+  end
 
 def reading_params
     params.require(:reading).permit(:author, :title, :description, :votes_for, :is_reworked, :meeting)

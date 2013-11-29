@@ -1,8 +1,11 @@
 class Reading < ActiveRecord::Base
+	
+
 	belongs_to :meeting
 	has_many :users
 
 	before_destroy :cancel_votes_for_this_reading
+
 
 	def is_reading_mine?(user)
 		recomended_by == "#{user.id}"

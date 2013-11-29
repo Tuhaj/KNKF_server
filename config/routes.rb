@@ -3,6 +3,7 @@ KNKF::Application.routes.draw do
   resources :readings do
     post "vote"
     post "unvote"
+    post "end_voting"
     end
   resources :meetings do
     post "add_me"

@@ -138,17 +138,6 @@ ActiveRecord::Schema.define(version: 20131129093907) do
     t.integer "hisal"
   end
 
-  create_table "surveys", force: true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.text     "feedback"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "full_name"
     t.string   "degree"
