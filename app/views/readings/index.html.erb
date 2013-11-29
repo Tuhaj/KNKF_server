@@ -30,9 +30,12 @@
         <% if reading.is_reading_mine?(current_user) == true %>
           <td> <%= link_to 'Destroy', reading, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
           <% else %>
-         <td></td>
-        
-         <td><%= link_to 'Zagłosuj', vote_path(reading), method: :post %> </td>
+         <td> </td>
+            <% if current_user.has_a_vote %>
+              <td> <%= link_to 'Zagłosuj', reading_vote_path(reading), method: :post %> </td>
+            <% else %>
+              <td> </td>
+            <% end %>
          <% end %>
         </tr>
     <% end %>
