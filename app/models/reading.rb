@@ -9,7 +9,7 @@ class Reading < ActiveRecord::Base
 
 	def cancel_votes_for_this_reading
 		User.all.each do |user|
-  			if user.voting_for == self
+  			if user.voting_for == "#{self}"
   				user.voting_for = nil
   				user.has_a_vote = true
   				user.save!

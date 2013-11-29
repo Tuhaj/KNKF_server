@@ -41,7 +41,7 @@ class ReadingsController < ApplicationController
 
   def vote
     @reading.votes_for = @reading.votes_for + 1 
-    @reading.save
+    @reading.save!
     current_user.has_a_vote = false
     current_user.voting_for = @reading
     current_user.save!
@@ -50,8 +50,9 @@ class ReadingsController < ApplicationController
 
    def unvote
     @reading.votes_for = @reading.votes_for - 1 
-    @reading.save
+    @reading.save!
     current_user.has_a_vote = true
+    current_user.voting_for = nil
     current_user.save!
     redirect_to readings_path, alert: "Wycofano głos na autora: #{@reading.author} tytuł: #{@reading.title}"
   end
