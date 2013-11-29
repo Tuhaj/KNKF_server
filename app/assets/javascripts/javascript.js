@@ -10,3 +10,8 @@ $(function() {
 $(function() {
     $( "#member" ).tooltip();
   });
+
+$(function() {
+    $( "#delete_reading" ).tooltip();
+  });
+

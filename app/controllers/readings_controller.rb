@@ -2,6 +2,7 @@ class ReadingsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :index, :show, :edit, :update, :vote, :unvote]
   before_action :set_reading, only: [:show, :edit, :update, :destroy] 
   before_action :set_reading_id, only: [:vote, :unvote]
+  
   def index
     @readings = Reading.all
   end
@@ -43,7 +44,7 @@ class ReadingsController < ApplicationController
     @reading.save
     current_user.has_a_vote = false
     current_user.voting_for = @reading
-    current_user.save
+    current_user.save!
     redirect_to readings_path, alert: "Oddałeś głos na autora: #{@reading.author} tytuł: #{@reading.title}"
   end
 
@@ -51,7 +52,7 @@ class ReadingsController < ApplicationController
     @reading.votes_for = @reading.votes_for - 1 
     @reading.save
     current_user.has_a_vote = true
-    current_user.save
+    current_user.save!
     redirect_to readings_path, alert: "Wycofano głos na autora: #{@reading.author} tytuł: #{@reading.title}"
   end
 
