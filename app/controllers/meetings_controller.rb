@@ -53,7 +53,7 @@ class MeetingsController < ApplicationController
   end
 
     def end_voting
-      @meeting.reading = Reading.all.where(votes_for: Reading.all.maximum(:votes_for)).first
+      @meeting.reading = Reading.active.best.first
       redirect_to @meeting
     end
 
