@@ -11,7 +11,7 @@
       <th>Tytuł</th>
       <th>Liczba głosów</th>
       <th>Spotkanie</th>
-      <th>Zagłosuj</th>
+      <th>Głosowanie</th>
       <th id="delete_reading" title="możesz skasować tylko lektury dodane przez siebie">Skasuj</th>
     </tr>
   </thead>
@@ -25,21 +25,29 @@
         <% if reading.meeting %>
         <td><%= link_to reading.meeting.name, meeting_path(reading.meeting) %>   </td>
         <% else %>
-        <td> Oczekuje spotkania</td>
+        <td> W trakcie głosowania</td>
         <% end %>
 
          <% if reading.meeting %> 
-         <td> <%= link_to "#{reading.meeting.name}", meeting_path(reading.meeting) %>   </td>
+         <td> <%= link_to "na spotkaniu: #{reading.meeting.name}", meeting_path(reading.meeting) %>   </td>
          <% else %>
-              <% if current_user.has_a_vote %>
-                <td> <%= link_to 'Zagłosuj', reading_vote_path(reading), method: :post %> </td>
-              <% else %>
-                    <% if reading == current_user.reading %>
-                    <td> <%= link_to 'Wycofaj głos', reading_unvote_path(reading), method: :post %> </td>
-                    <% else %>
-                    <td></td>
-                    <% end %>
-              <% end %>
+
+            <% if current_user.knkf_member %>
+
+                <% if current_user.has_a_vote %>
+                  <td> <%= link_to 'Zagłosuj', reading_vote_path(reading), method: :post %> </td>
+                <% else %>
+                      <% if reading == current_user.reading %>
+                        <td> <%= link_to 'Wycofaj głos', reading_unvote_path(reading), method: :post %> </td>
+                      <% else %>
+                        <td></td>
+                      <% end %>
+                <% end %>
+
+            <% else %>
+              <td>Jako gość nie możesz głosować</td>
+            <% end %>
+
            <% end %>
 
         <% if reading.is_reading_mine?(current_user) == true %>
