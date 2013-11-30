@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "KNKF@knkf.pl"
+  default from: "knkf.uw@gmail.com"
 
 
     def welcome_mail(user)
@@ -9,6 +9,6 @@ class UserMailer < ActionMailer::Base
 
   	def application_mail(user)
   		@user = user
-  		mail to: "knkf.uw@gmail.com", subject: "Aplikacja o członkowstwo"
+  		mail to: "piotr.zientara1@gmail.com", subject: "Aplikacja o członkowstwo"
   	end
 end

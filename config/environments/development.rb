@@ -1,16 +1,18 @@
 KNKF::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.raise_delivery_errors = true
+
 # Change mail delvery to either :smtp, :sendmail, :file,
-  :test
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
+:test
+ config.action_mailer.delivery_method = :smtp
+ config.action_mailer.perform_deliveries = true
+ config.action_mailer.smtp_settings = {
+     :tls => true,
      enable_starttls_auto: true,
-     address: "smtp.mailgun.org",
+     address: "smtp.gmail.com",
      port: 587,
-     domain: "sandbox5572.mailgun.org",
-     authentication: "plain text",
-     user_name: "postmaster@sandbox5572.mailgun.org",
+     domain: "smtp.gmail.com",
+     authentication: "plain",
+     user_name: "knkf.uw@gmail.com",
      password: ENV["PASSWORD"]
 }
 
