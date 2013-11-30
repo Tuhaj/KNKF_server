@@ -36,7 +36,7 @@
          <td><%= link_to 'weź udział', meeting_add_me_path(meeting), class: "btn btn-link", method: :post %></td>
         <% end %>
       <% if meeting.is_meeting_mine?(current_user) == true %>
-        <td><%= link_to 'Usuń', meeting, class: "btn btn-link", method: :delete %></td>
+        <td><%= link_to 'Usuń', meeting, class: "btn btn-link", method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %></td>
         <% else %>
         <td></td>
         <% end %>

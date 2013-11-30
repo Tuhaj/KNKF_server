@@ -29,7 +29,7 @@
         <% end %>
 
          <% if reading.meeting %> 
-         <td> <%= link_to "na spotkaniu: #{reading.meeting.name}", meeting_path(reading.meeting) %>   </td>
+         <td>Głosowanie zamknięte</td>
          <% else %>
 
             <% if current_user.knkf_member %>
@@ -51,7 +51,7 @@
            <% end %>
 
         <% if reading.is_reading_mine?(current_user) == true %>
-          <td> <%= link_to 'Skasuj', reading, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+          <td> <%= link_to 'Skasuj', reading, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %> </td>
           <% else %>
           <td> </td>
         <% end %>
