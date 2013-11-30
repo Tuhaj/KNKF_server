@@ -18,4 +18,3 @@
 
 //= require_tree .
 
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>

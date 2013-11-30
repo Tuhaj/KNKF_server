@@ -8,9 +8,9 @@ KNKF::Application.configure do
      enable_starttls_auto: true,
      address: "smtp.mailgun.org",
      port: 587,
-     domain: "knkf.pl",
-     authentication: "plain",
-     user_name: "postmaster@knkf.pl",
+     domain: "sandbox5572.mailgun.org",
+     authentication: "plain text",
+     user_name: "postmaster@sandbox5572.mailgun.org",
      password: ENV["PASSWORD"]
 }
 

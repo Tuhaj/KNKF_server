@@ -4,7 +4,11 @@ class UserMailer < ActionMailer::Base
 
     def welcome_mail(user)
   	@user = user
-  	mail to: user.email, subject: "Potwierdzenie rejestracji"
+  	mail to: @user.email, subject: "Potwierdzenie rejestracji"
   end
 
+  	def application_mail(user)
+  		@user = user
+  		mail to: "knkf.uw@gmail.com", subject: "Aplikacja o członkowstwo"
+  	end
 end

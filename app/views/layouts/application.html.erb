@@ -32,7 +32,7 @@
 </li>
 
 	<div class="form-group"><%= link_to 'Lektury', readings_path, class: "btn btn-link" %></div>
-	<div class="form-group"><%= link_to 'Kontakt', readings_path, class: "btn btn-link" %></div>
+	<div class="form-group"><%= link_to 'Aplikuj o członkowstwo', user_edit_path, class: "btn btn-link" %></div>
 	<div class="form-group"><%= link_to 'O nas', home_about_us_path, class: "btn btn-link" %></div>
 
 </navbar>
@@ -42,12 +42,18 @@
 <navbar class="navbar-form navbar-right">
 
 <% if current_user.knkf_member %>
-		<div class="form-group" title="jako członek KNKF możesz dodawać nowe spotkania, lektury na spotkania oraz głosować" id="member"><%= current_user.full_name %>, zalogowaliśmy Cię, masz uprawnienia KNKF <%= current_user.id %> </div>
+		<div class="form-group" title="Jako członek KNKF możesz dodawać nowe spotkania, własne propozycje lektur, oraz głosować." id="member"><%= current_user.full_name %>, zalogowaliśmy Cię, masz uprawnienia KNKF <%= current_user.id %> </div>
 		<% else %>
-		<div class="form-group" title="jako gość możesz zapisać się lub wypisać ze spotkania, nie możesz tworzyć spotkań i głosować na lektury" id="guest"> <%= current_user.full_name %>, zalogowaliśmy Cię, masz uprawnienia gościa <%= current_user.id %> </div>
+		<div class="form-group" title="Jako gość możesz zapisać się lub wypisać ze spotkania, nie możesz tylko tworzyć spotkań, lektur i na nie głosować." id="guest"> <%= current_user.full_name %>, zalogowaliśmy Cię, masz uprawnienia gościa <%= current_user.id %> </div>
 	<% end %>
-		<div class="form-group"> </div> <%= link_to "Zmień moje dane", edit_user_registration_path %> </div>
-		<div class="form-group"><%= link_to 'Wyloguj', destroy_user_session_path, class: "btn btn-link", :method =>'delete' %> </div>
+	<li class="dropdown form-group">
+		<a class="dropdown-toogle" data-toggle='dropdown' href='#'> Konto <span class='caret'></span>
+		</a>
+		<ul class="dropdown-menu">
+		<div> </div> <%= link_to "Zmień moje dane", edit_user_registration_path %> </div>
+		<div ><%= link_to 'Wyloguj', destroy_user_session_path, class: "btn btn-link", :method =>'delete' %> </div>
+		</ul>
+	</li>
 <% end %>
 
 

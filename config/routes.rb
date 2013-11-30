@@ -1,4 +1,5 @@
 KNKF::Application.routes.draw do
+  get "user/edit"
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :readings do
     post "vote"
