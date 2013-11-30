@@ -6,14 +6,13 @@ KNKF::Application.configure do
  config.action_mailer.delivery_method = :smtp
  config.action_mailer.perform_deliveries = true
  config.action_mailer.smtp_settings = {
-     :tls => true,
      enable_starttls_auto: true,
      address: "smtp.gmail.com",
      port: 587,
-     domain: "smtp.gmail.com",
+     domain: "gmail.com",
      authentication: "plain",
      user_name: "knkf.uw@gmail.com",
-     password: ENV["PASSWORD"]
+     password: "Nietzsche"
 }
 
   # In the development environment your application's code is reloaded on
