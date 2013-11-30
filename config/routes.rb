@@ -14,6 +14,8 @@ KNKF::Application.routes.draw do
   end
 
   get "home/index"
+  get "home/about_us"
+
   devise_for :users
   devise_for :admins, path: :moderators
   root :to => "home#index"
