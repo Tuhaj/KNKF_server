@@ -7,7 +7,6 @@ describe "Model User" do
 		@meeting = Meeting.new
 		@lecture = Lecture.new
 		@application = Application.new
-		@survey = Survey.new
 	end
 
 	it "User can be created" do
@@ -33,9 +32,5 @@ describe "Model User" do
 		@user.applications.should_not be_nil
 	end
 
-		it "has association with survey" do
-		@user.surveys.build
-		@user.surveys.should_not be_nil
-	end
 
 end

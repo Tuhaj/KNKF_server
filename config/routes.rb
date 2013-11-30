@@ -1,5 +1,4 @@
 KNKF::Application.routes.draw do
-  get "user/edit"
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :readings do
     post "vote"
@@ -8,13 +7,14 @@ KNKF::Application.routes.draw do
   resources :meetings do
     post "add_me"
     delete "remove_me"
-      post "end_voting"
+    post "end_voting"
     collection do
       get "my" => "meetings#index", :my => true
     end
   end
 
   get "home/index"
+  get "user/edit"
   get "home/about_us"
 
   devise_for :users
