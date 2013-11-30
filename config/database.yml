@@ -6,9 +6,8 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: product_search_development2
+  database: knkf_development
   pool: 5
-  username: piotrzientara
   
 
 # Warning: The database defined as "test" will be erased and
@@ -17,7 +16,6 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: product_search_development2_test
+  database: knkf_development_test
   pool: 5
-  username: piotrzientara
 
