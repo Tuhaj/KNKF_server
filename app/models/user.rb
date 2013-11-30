@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :applications
   belongs_to :reading
 
-  before_create :set_vote
+  before_create :set_vote, :set_referee_false
   after_create :send_welcome_mail
 
   def send_welcome_mail
@@ -23,5 +23,8 @@ class User < ActiveRecord::Base
       self.has_a_vote = true
   end
   
+  def set_referee_false
+      self.referee = false
+  end
 
 end

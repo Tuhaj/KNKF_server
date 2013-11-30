@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131129093907) do
+ActiveRecord::Schema.define(version: 20131130123754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,17 @@ ActiveRecord::Schema.define(version: 20131129093907) do
     t.integer "hisal"
   end
 
+  create_table "surveys", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "feedback"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "full_name"
     t.string   "degree"
@@ -156,6 +167,7 @@ ActiveRecord::Schema.define(version: 20131129093907) do
     t.string   "last_sign_in_ip"
     t.boolean  "has_a_vote"
     t.string   "voting_for"
+    t.boolean  "referee"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
