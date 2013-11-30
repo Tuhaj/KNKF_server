@@ -1,9 +1,8 @@
 class MeetingsController < ApplicationController
 #czy only jest dobre?
-  before_filter :authenticate_user!, only: [:new, :index, :show, :edit, :update, :my, :add_me, :remove_me]
+  before_filter :authenticate_user!, only: [:new, :index, :show, :edit, :update, :my, :add_me, :remove_me, :end_voting]
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-  before_action :find_meeting, only: [:add_me,:remove_me]
-
+  before_action :find_meeting, only: [:add_me,:remove_me, :end_voting]
 
 
   def index
@@ -53,6 +52,11 @@ class MeetingsController < ApplicationController
     redirect_to my_meetings_path
   end
 
+    def end_voting
+      @meeting.reading = Reading.all.where(votes_for: Reading.all.maximum(:votes_for)).first
+      redirect_to @meeting
+    end
+
   private
 
    def set_meeting
@@ -62,7 +66,6 @@ class MeetingsController < ApplicationController
    def find_meeting
       @meeting = Meeting.find(params[:meeting_id])
    end 
-
 
   
   def meeting_params
