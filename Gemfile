@@ -26,6 +26,7 @@ gem 'jquery-ui-rails'
 
 gem "devise", "~> 3.2.1"
 
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
@@ -52,4 +53,4 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-ruby '2.1.0'
+ruby "2.0.0"
