@@ -1,9 +1,14 @@
+<% if Message.last.membership %>
 <h2> Aplikacja o przystąpienie do KNKF doktorantów UW</h2>
+<% else %>
+<h2> Formularz kontaktowy </h2>
+<% end %>
 
-
-
-<p><%= @user.degree %> <%= @user.full_name %> zwraca się z prośbą o przystąpienie do KNKF.
+<p><%= @user.degree %> <%= @user.full_name %> przysłał wiadomość
 Email: <%= @user.email %>
 </p>
-<p>Treść wiadomości:</p>
+<h3>Temat: </h3>
+<p> <%= Message.last.title %> </p>
+<h3>Treść wiadomości:</h3>
+<p> <%= Message.last.content %> </p>
 
