@@ -437,8 +437,6 @@ RailsAdmin.config do |config|
 
   #     configure :meetings, :has_and_belongs_to_many_association 
   #     configure :lectures, :has_and_belongs_to_many_association 
-  #     configure :applications, :has_many_association 
-  #     configure :surveys, :has_many_association 
 
   #   # Found columns:
 

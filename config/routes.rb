@@ -1,6 +1,6 @@
 KNKF::Application.routes.draw do
-  get "applications/new"
-  get "applications/create"
+
+ 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :readings do
     post "vote"
@@ -18,7 +18,9 @@ KNKF::Application.routes.draw do
   get "home/index"
   get "user/edit"
   get "home/about_us"
-
+  get "messages/new"
+  post "messages/create"
+  
   devise_for :users
   devise_for :admins, path: :moderators
   root :to => "home#index"

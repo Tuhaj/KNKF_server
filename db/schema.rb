@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131130123754) do
+ActiveRecord::Schema.define(version: 20131201190723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,19 +30,6 @@ ActiveRecord::Schema.define(version: 20131130123754) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "applications", force: true do |t|
-    t.text     "abstract"
-    t.text     "description"
-    t.string   "author_full_name"
-    t.boolean  "approved"
-    t.boolean  "membership"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "applications", ["user_id"], name: "index_applications_on_user_id", using: :btree
 
   create_table "bonus", id: false, force: true do |t|
     t.string  "ename", limit: 10
@@ -106,6 +93,17 @@ ActiveRecord::Schema.define(version: 20131130123754) do
 
   add_index "meetings_users", ["meeting_id"], name: "index_meetings_users_on_meeting_id", using: :btree
   add_index "meetings_users", ["user_id"], name: "index_meetings_users_on_user_id", using: :btree
+
+  create_table "messages", force: true do |t|
+    t.string   "title"
+    t.boolean  "membership"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"

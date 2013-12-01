@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ApplicationsController do
+describe MessageController do
 
   describe "GET 'new'" do
     it "returns http success" do
