@@ -16,6 +16,18 @@ KNKF::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+ config.action_mailer.delivery_method = :smtp
+ config.action_mailer.perform_deliveries = true
+ config.action_mailer.smtp_settings = {
+     enable_starttls_auto: true,
+     address: "smtp.gmail.com",
+     port: 587,
+     domain: "gmail.com",
+     authentication: "plain",
+     user_name: ENV["GMAIL_USERNAME"],
+     password: ENV["GMAIL_PASSWORD"]
+}
+
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
