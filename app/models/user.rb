@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   belongs_to :reading
 
   before_create :set_vote 
-  # after_create :send_welcome_mail
+  after_create :send_welcome_mail
 
   def send_welcome_mail
 		UserMailer.welcome_mail(self).deliver
