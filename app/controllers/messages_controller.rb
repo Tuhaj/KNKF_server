@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user = current_user
 		if @message.save
-		    redirect_to home_index_path, :notice => "Udało się wysłać formularz"
+        redirect_to user_edit_path
 	    else
 	      render :new
 	    end

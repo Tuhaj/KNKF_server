@@ -9,6 +9,6 @@ class UserMailer < ActionMailer::Base
 
   	def application_mail(user)
   		@user = user
-  		mail to: "piotr.zientara1@gmail.com", subject: "Aplikacja o członkowstwo"
+  		mail to: "piotr.zientara1@gmail.com", subject: "Wiadomość do administratora"
   	end
 end
