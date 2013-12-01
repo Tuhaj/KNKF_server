@@ -13,16 +13,3 @@
  *= require_tree .
  */
 
-body {
-padding: 2em;
-	text-align: center;
-}
-.image {
-	height: 17em;
-}
-.align_left {
-	text-align: left;
-}
-.header {
-		text-align: center;
-}
