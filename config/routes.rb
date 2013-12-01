@@ -1,4 +1,6 @@
 KNKF::Application.routes.draw do
+  get "applications/new"
+  get "applications/create"
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :readings do
     post "vote"

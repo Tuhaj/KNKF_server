@@ -9,10 +9,9 @@
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
 </head>
-<body class="text-center">
 
+<body class="text-center">
 
 <div>
 	<%= image_tag('http://upload.wikimedia.org/wikipedia/en/thumb/3/31/POL_University_of_Warsaw_logo.svg/216px-POL_University_of_Warsaw_logo.svg.png')%>
@@ -24,12 +23,12 @@
 	<div class="form-group"><%= link_to 'Strona główna', home_index_path, class: "btn btn-link" %></div>
 
 <li class="dropdown form-group">
-<a class="dropdown-toogle" data-toggle='dropdown' href='#'>Spotkania <span class='caret'></span>
-</a>
-	<ul class="dropdown-menu">
-		<div ><%= link_to 'Wszystkie spotkania', meetings_path, class: "btn btn-link" %></div>
-		<div ><%= link_to 'Moje spotkania', my_meetings_path, class: "btn btn-link" %></div>
-	</ul>
+	<a class="dropdown-toogle" data-toggle='dropdown' href='#'>Spotkania <span class='caret'></span>
+	</a>
+		<ul class="dropdown-menu">
+			<div ><%= link_to 'Wszystkie spotkania', meetings_path, class: "btn btn-link" %></div>
+			<div ><%= link_to 'Moje spotkania', my_meetings_path, class: "btn btn-link" %></div>
+		</ul>
 </li>
 
 	<div class="form-group"><%= link_to 'Lektury', readings_path, class: "btn btn-link" %></div>
@@ -40,6 +39,7 @@
 
 <navbar class="navbar-form navbar-left">
 </navbar>
+
 <navbar class="navbar-form navbar-right">
 
 <% if current_user.knkf_member %>
@@ -59,9 +59,9 @@
 
 
 </navbar>
-<br>
-<br>
 
+<br>
+<br>
 
 <%= yield %>
 

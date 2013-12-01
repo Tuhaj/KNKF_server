@@ -1,0 +1,21 @@
+<%= form_for @application, url: {action: "create"} do |f| %>
+    <% if @meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@application.errors.count, "error") %> uniemożliwiło stworzenie nowego zgłoszenia</h2>
+
+      <ul>
+      <% @application.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>Proszę wypełnij formularz</p>
+<p> Nazwa spotkania: <%= f.text_field :name, class: "form-control-static" %> </p>
+<p> Data: <%= f.text_field :date, class: "form-control-static datepicker" %> </p>
+<p> Opis: <%= f.text_area :description, class: "form-control-static" %> </p>
+	  		<%= f.submit "Utwórz" %>
+
+
+<% end %>
