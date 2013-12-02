@@ -6,7 +6,7 @@ describe "Model User" do
 		@user = User.new email:"asd@asd.pl", password:"asdasdasd"
 		@meeting = Meeting.new
 		@lecture = Lecture.new
-		@application = Application.new
+		@message = Message.new
 	end
 
 	it "User can be created" do
@@ -28,8 +28,8 @@ describe "Model User" do
 	end
 
 	it "has association with application" do
-		@user.applications.build
-		@user.applications.should_not be_nil
+		@user.messages.build
+		@user.messages.should_not be_nil
 	end
 
 
