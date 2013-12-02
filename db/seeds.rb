@@ -8,9 +8,9 @@
 
 Admin.create(email: "zrazic@wp.pl", password: "Ubuntu618")
 
- Meeting.create(name:"bedzie2", date:"2014-01-13")
- Meeting.create(name:"bedzie2", date:"2013-12-13")
- Meeting.create(name:"bylo", date:"2012-01-13")
+Meeting.create(name:"bedzie2", date:"2014-01-13")
+Meeting.create(name:"bedzie2", date:"2013-12-13")
+Meeting.create(name:"bylo", date:"2012-01-13")
 
 User.create(full_name: "Piotr", degree: "MA", password: "mama1234", email: "piotr.zientara1@gmail.com")
 User.create(full_name: "Hieronim", degree: "Professor", password: "mama1234", email: "zrazic@wp.pl")
