@@ -5,8 +5,4 @@ FactoryGirl.define do
   	email "zrazic@wp.pl"
   	password "secretly_created"
   end
-    factory :user do
-  	email "zrazic@wp.pl"
-  	password "secretly_created"
-  end
 end

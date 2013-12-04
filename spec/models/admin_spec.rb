@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Admin do
+describe "Model Admin" do
 
 		before(:all) do
 		@admin = Admin.new email:"zrazic@wp.pl", password:"asdasdasd"
@@ -8,7 +8,8 @@ describe Admin do
 
 	it "Admin can be created" do
   	admin = @admin
-  	@admin.email.should = zrazic@wp.pl
+  	@admin.email.should == 'zrazic@wp.pl'
+  	@admin.password.should == 'asdasdasd'
 
 	end
 

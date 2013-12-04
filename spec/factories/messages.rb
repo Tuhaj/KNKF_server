@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :message do
-    title "MyString"
+    title "tytuł wiadomości"
     membership false
-    content "MyText"
+    content "Wiadomość"
   end
 end
