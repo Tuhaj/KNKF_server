@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 describe Reading do
 	  it "scope works" do
 	  reading1 = create(:reading)
@@ -9,8 +8,11 @@ describe Reading do
 	  Reading.count.should eq 4
 	  Reading.best.count.should eq 2
 	  Reading.active.best.count.should eq 1
-
-
-
 	end
+
+	 it "my reading method" do
+	 	user = create(:user)
+	 	reading = create(:reading, recomended_by: user)
+	 	reading.is_reading_mine?(user).should be_true
+	 end
 end
