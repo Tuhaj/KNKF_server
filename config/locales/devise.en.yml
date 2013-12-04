@@ -4,7 +4,7 @@ en:
   devise:
     confirmations:
       confirmed: "Konto zostało potwierdzone."
-      send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
+      send_instructions: "Otrzymasz email z instrukcją jak potwierdzić swoje konto w przeciągu kilku minut."
       send_paranoid_instructions: "Twój email już istnieje w naszej bazie danych, otrzymasz email z instrukcją w ciągu kilku minut."
     failure:
       already_authenticated: "Już zalogowano"
