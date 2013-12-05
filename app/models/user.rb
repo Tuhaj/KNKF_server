@@ -4,10 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_and_belongs_to_many :meetings
+  has_one :meeting
   has_and_belongs_to_many :lectures
   has_many :messages
   belongs_to :reading
   has_many :readings
+
 
 
   ROLES = %w[admin moderator author editor]
