@@ -10,9 +10,17 @@ describe Reading do
 	  Reading.active.best.count.should eq 1
 	end
 
-	 it "my reading method" do
+	 xit "my reading method" do
 	 	user = create(:user)
-	 	reading = create(:reading, recomended_by: user)
+	 	reading = create(:reading, recomended_by: user.id.to_s)
 	 	reading.is_reading_mine?(user).should be_true
 	 end
+
+	 it "reading user association" do
+	 	current_user = create(:user)
+	 	reading = create(:reading)
+	 	reading.user = current_user
+	 	reading.user.should eq current_user
+	 end
+
 end

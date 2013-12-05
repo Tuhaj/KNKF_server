@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :lectures
   has_many :messages
   belongs_to :reading
+  has_many :readings
 
   before_create :set_vote 
   after_create :send_welcome_mail

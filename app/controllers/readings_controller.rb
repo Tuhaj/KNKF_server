@@ -18,7 +18,7 @@ class ReadingsController < ApplicationController
 
   def create
     @reading = Reading.new(reading_params)
-    @reading.recomended_by = current_user
+    @reading.user = current_user
     @reading.votes_for = 0
     @reading.is_reworked = false
     if @reading.save

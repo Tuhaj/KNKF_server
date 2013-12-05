@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201190723) do
+ActiveRecord::Schema.define(version: 20131205105042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,8 +127,10 @@ ActiveRecord::Schema.define(version: 20131201190723) do
     t.integer  "meeting_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "recomended_by"
+    t.integer  "user_id"
   end
+
+  add_index "readings", ["user_id"], name: "index_readings_on_user_id", using: :btree
 
   create_table "salgrade", id: false, force: true do |t|
     t.integer "grade"

@@ -3,6 +3,7 @@ class Reading < ActiveRecord::Base
 
 	belongs_to :meeting
 	has_many :users
+	belongs_to :user
 
 	before_destroy :cancel_votes_for_this_reading
 
@@ -15,10 +16,6 @@ class Reading < ActiveRecord::Base
 
 	def self.best
 		where(votes_for: Reading.all.maximum(:votes_for))
-	end
-
-	def is_reading_mine?(user)
-		recomended_by == "#{user.id}"
 	end
 
 	def cancel_votes_for_this_reading
