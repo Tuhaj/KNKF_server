@@ -36,6 +36,7 @@ class ReadingsController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @reading
     @reading.destroy
     redirect_to readings_path, alert: "Usunąłem lekturę"
   end

@@ -50,8 +50,7 @@
 
            <% end %>
 
-
-         <% if reading.user == current_user%>
+        <% if can? :destroy, reading %>
           <td> <%= link_to 'Skasuj', reading, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %> </td>
           <% else %>
           <td> </td>

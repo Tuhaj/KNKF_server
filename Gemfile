@@ -26,6 +26,8 @@ gem 'jquery-ui-rails'
 
 gem "devise", "~> 3.2.1"
 
+gem 'cancan'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do

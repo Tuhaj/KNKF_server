@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   belongs_to :reading
   has_many :readings
 
+
+  ROLES = %w[admin moderator author editor]
+
   before_create :set_vote 
   after_create :send_welcome_mail
 

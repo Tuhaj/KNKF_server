@@ -7,9 +7,6 @@ class Reading < ActiveRecord::Base
 
 	before_destroy :cancel_votes_for_this_reading
 
-	scope :active 
-	scope :best
-
 	def self.active
 		where(meeting_id: nil)
 	end
