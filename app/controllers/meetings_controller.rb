@@ -62,6 +62,8 @@ class MeetingsController < ApplicationController
       @meeting.reading = Reading.active.best.first
       User.update_all(voting_for: nil)
       User.update_all(has_a_vote: true)
+
+      @meeting.end_vote
       redirect_to @meeting
     end
 
