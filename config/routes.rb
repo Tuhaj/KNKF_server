@@ -1,7 +1,9 @@
 KNKF::Application.routes.draw do
 
- 
-  mount RailsAdmin::Engine => '/rails_admin', :as => 'rails_admin'
+  namespace :administrator do
+    mount RailsAdmin::Engine => '/rails_admin', :as => 'rails_admin'
+  end
+
   resources :readings do
     post "vote"
     post "unvote"
