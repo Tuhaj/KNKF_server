@@ -5,8 +5,7 @@ class Meeting < ActiveRecord::Base
 
 	validates :name, presence: true 
 	validates :name, :uniqueness => { :message => "Nazwa spotkania zajęta" }
-	validates :date, presence: true
-
+	validates_presence_of :date
 	validate :is_meeting_actual?
 
 	def is_user_in_meeting?(user)
@@ -14,7 +13,7 @@ class Meeting < ActiveRecord::Base
 	end
 
 	def is_meeting_actual?
-		errors.add(:date, " - podana data nie może być wcześniejsza niż dziś") if date < Date.today
+		errors.add(:date, " - podana data nie może być wcześniejsza niż dziś") if date.present? && date < Date.today  
 	end
 
 end
