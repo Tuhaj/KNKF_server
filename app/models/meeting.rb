@@ -16,4 +16,9 @@ class Meeting < ActiveRecord::Base
 		errors.add(:date, " - podana data nie może być wcześniejsza niż dziś") if date.present? && date < Date.today  
 	end
 
+	def end_vote
+	  self.reading = Reading.all.active.best.first
+      User.update_all(voting_for: nil)
+      User.update_all(has_a_vote: true)
+     end
 end

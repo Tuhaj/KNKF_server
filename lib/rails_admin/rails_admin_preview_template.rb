@@ -16,16 +16,14 @@ module RailsAdmin
         register_instance_option :member? do
           true
         end
-        
+
         register_instance_option :link_icon do
           'icon-eye-open'
         end
 
         register_instance_option :controller do
           Proc.new do
-
-            @meetings = Meetings.all
-
+            @object.end_vote
           end
         end
       end
