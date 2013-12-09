@@ -25,7 +25,6 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.user = current_user
- #   @meeting.made_by = current_user
     if @meeting.save
       add_me
     else
@@ -37,6 +36,12 @@ class MeetingsController < ApplicationController
   end
 
   def update
+    @meeting.update(meeting_params)
+    if @meeting.save
+      redirect_to @meeting, notice: 'Poprawiono dane spotkania.' 
+    else
+      render action: 'edit'
+    end
   end
 
   def destroy

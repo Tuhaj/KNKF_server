@@ -1,4 +1,4 @@
-<%= form_for @meeting, url: {action: "create"} do |f| %>
+<%= form_for @meeting do |f| %>
     <% if @meeting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@meeting.errors.count, "error") %> uniemożliwiło stworzenie nowego spotkania</h2>

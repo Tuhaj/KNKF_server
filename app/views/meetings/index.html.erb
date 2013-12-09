@@ -17,7 +17,7 @@
     <th>Data</th>
     <th>Link</th>
     <th>Weź udział</th>
-    <th>Usuń</th>
+    <th>Edytuj/Usuń</th>
 
 
   </tr>
@@ -36,7 +36,7 @@
          <td><%= link_to 'weź udział', meeting_add_me_path(meeting), class: "btn btn-link", method: :post %></td>
         <% end %>
       <% if can? :destroy, meeting %>
-        <td><%= link_to 'Usuń', meeting, class: "btn btn-link", method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %></td>
+        <td><%= link_to 'Edytuj', edit_meeting_path(meeting), class: "btn btn-link" %> <%= link_to 'Usuń', meeting, class: "btn btn-link", method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %> </td>
         <% else %>
         <td></td>
         <% end %>
