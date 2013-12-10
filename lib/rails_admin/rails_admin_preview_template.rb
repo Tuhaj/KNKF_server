@@ -25,6 +25,7 @@ module RailsAdmin
           Proc.new do
             @object.end_vote
             flash.now[:notice] = "lektura: #{@object.reading} została wybrana." 
+            redirect_to back_or_index
           end
         end
       end
