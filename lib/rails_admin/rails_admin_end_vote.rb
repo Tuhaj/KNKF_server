@@ -24,7 +24,11 @@ module RailsAdmin
         register_instance_option :controller do
           Proc.new do
             @object.end_vote 
+            if object.reading == nil
+              redirect_to back_or_index, notice: "Nie ma żadnej wolnej lektury"
+            else
             redirect_to back_or_index, notice: "lektura: #{@object.reading.title} została wybrana."
+            end
           end
         end
       end

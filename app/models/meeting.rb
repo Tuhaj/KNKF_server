@@ -17,8 +17,13 @@ class Meeting < ActiveRecord::Base
 	end
 
 	def end_vote
-	  self.reading = Reading.all.active.best.first
+	@winner = Reading.all.active.best.first
+		if @winner.nil?
+	self.reading = @winner
+		else
+	  self.reading = @winner
       User.update_all(voting_for: nil)
       User.update_all(has_a_vote: true)
+ 		end
   	end
 end
