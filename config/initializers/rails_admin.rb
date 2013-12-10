@@ -5,7 +5,7 @@ RailsAdmin.config do |config|
 
 
   ################  Global configuration  ################
-
+  #require 'rails_admin/config/locales/rails_admin.en.yml'
   # Set the admin name here (optional second array element will appear in red). For example:
   config.main_app_name = ['Knkf', 'Admin']
   # or for a more dynamic name:
@@ -16,6 +16,8 @@ RailsAdmin.config do |config|
 
     authenticate_admin!
   end
+
+
   config.current_user_method { current_admin } # auto-generated
 
     config.actions do

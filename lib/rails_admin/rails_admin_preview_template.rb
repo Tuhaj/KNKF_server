@@ -18,12 +18,13 @@ module RailsAdmin
         end
 
         register_instance_option :link_icon do
-          'icon-eye-open'
+          'icon-bullhorn'
         end
 
         register_instance_option :controller do
           Proc.new do
             @object.end_vote
+            flash.now[:notice] = "lektura: #{@object.reading} została wybrana." 
           end
         end
       end

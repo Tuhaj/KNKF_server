@@ -20,5 +20,6 @@ class Meeting < ActiveRecord::Base
 	  self.reading = Reading.all.active.best.first
       User.update_all(voting_for: nil)
       User.update_all(has_a_vote: true)
+      rails_admin.show_path
      end
 end
