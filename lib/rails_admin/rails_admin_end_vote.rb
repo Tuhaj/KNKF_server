@@ -10,7 +10,7 @@ module RailsAdmin
       class EndVote < RailsAdmin::Config::Actions::Base
         RailsAdmin::Config::Actions.register(self)
         register_instance_option :visible? do
-          authorized? # && bindings[:object].respond_to?(:meetings)
+          authorized? && bindings[:object].respond_to?(:end_vote)
         end
 
         register_instance_option :member? do
