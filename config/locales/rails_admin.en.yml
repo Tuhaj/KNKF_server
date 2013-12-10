@@ -58,7 +58,7 @@ en:
       item: "Item"
       message: "Message"
     actions:
-      preview_template:
+      end_vote:
         title: "End vote"
         menu: "End vote"
         breadcrumb: "End vote"

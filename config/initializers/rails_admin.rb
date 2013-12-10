@@ -1,6 +1,6 @@
 # RailsAdmin config file. Generated on November 26, 2013 10:28
 # See github.com/sferik/rails_admin for more informations
-require "rails_admin/rails_admin_preview_template"
+require "rails_admin/rails_admin_end_vote"
 RailsAdmin.config do |config|
 
 
@@ -33,7 +33,7 @@ RailsAdmin.config do |config|
     # custom actions:
     # make sure rails_admin_preview_template has been required (should
     # be by rage_core engine)
-    preview_template
+    end_vote
   end
 
   # If you want to track changes on your models:
