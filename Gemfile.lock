@@ -222,6 +222,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   pg
+  rack-test
   rails (= 4.0.1)
   rails_12factor
   rails_admin

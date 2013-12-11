@@ -1,0 +1,5 @@
+class Api::V1::MeetingsController < Api::V1::BaseController
+def index
+	respond_with(Meeting.all)
+	end
+end

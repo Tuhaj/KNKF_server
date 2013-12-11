@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   has_and_belongs_to_many :meetings
   has_one :meeting
   has_and_belongs_to_many :lectures
@@ -12,8 +13,9 @@ class User < ActiveRecord::Base
 
 
 
-  ROLES = %w[admin moderator author editor]
+  # ROLES = %w[admin moderator author editor]
 
+  before_save :ensure_authentication_token
   before_create :set_vote 
   after_create :send_welcome_mail
 
@@ -28,6 +30,19 @@ class User < ActiveRecord::Base
   def set_vote
       self.has_a_vote = true
     #  self.referee = false
+  end
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
   end
   
 
