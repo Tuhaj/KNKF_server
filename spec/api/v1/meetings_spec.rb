@@ -9,7 +9,7 @@ let!(:meeting) { create(:meeting)}
 context "meetings viewable by this user" do
 	let(:url) { "/api/v1/meetings" }
 	it "json" do
-		get "#{url}.json"
+		get url, format: :json, authentication_token: user.authentication_token
 
 		meetings_json = Meeting.all.to_json
 		response.body.should eql(meetings_json)

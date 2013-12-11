@@ -8,11 +8,11 @@ class Api::V1::BaseController < ActionController::Base
     user_token = params[:authentication_token].presence
     user       = user_token && (current_user = User.find_by_authentication_token(user_token))
 
-    # if user
-    #   @current_user = current_user
-    # else
-    #   render json: { message: "Wrong token" }, status: 401
-    # end
+    if user
+      @current_user = current_user
+    else
+      render json: { message: "Wrong token" }, status: 401
+    end
   end
 
   def current_user
