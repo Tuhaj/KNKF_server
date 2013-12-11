@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
 
   def set_vote
       self.has_a_vote = true
-    #  self.referee = false
   end
 
   def ensure_authentication_token

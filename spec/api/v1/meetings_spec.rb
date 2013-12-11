@@ -3,9 +3,6 @@ require "spec_helper"
 describe "/api/v1/meetings", :type => :api do
 let!(:user) { create(:user) }
 let!(:meeting) { create(:meeting)}
-# before do
-# 	user.permissions.create!(:action => "view", :thing => meeting)
-# 	end
 context "meetings viewable by this user" do
 	let(:url) { "/api/v1/meetings" }
 	it "json" do
@@ -23,8 +20,3 @@ context "meetings viewable by this user" do
 	end
 end
 end
-
-
-# describe "/api/v1/meetings", :type => :api do
-# 	let!(:admin) { Factory(:admin) }
-# end

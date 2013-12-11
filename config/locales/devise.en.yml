@@ -34,7 +34,7 @@ en:
       updated_not_active: "Twoje hasło zostało zmienione."
     registrations:
       destroyed: "Twoje konto zostało skutecznie skasowane. Mamy nadzieje, że zobaczymy się w krótce."
-      signed_up: "Witaj! Twoje konto jest aktywowane. Jeśli chcesz należeć do koła, możesz później uzupełnić swoje dane."
+      signed_up: "Witaj! Twoje konto jest aktywowane. Jeśli chcesz należeć do koła, kliknij 'dołącz do koła' i wyślij uzupełniony formularz"
       signed_up_but_inactive: "Zarejestrowano. Nie mogliśmy Cię jeszcze zalogować, ponieważ potrzebne jest jeszcze potwierdzenie."
       signed_up_but_locked: "Zarejestrowaliśmy Cię, jednak nie mogliśmy Cię zalogować poniważ Twoje konto jest zablokowane."
       signed_up_but_unconfirmed: "Wiadomość z łączem do potwierdzenia została wysłana na Twoje konto. Proszę otwórz łącze by potwiedzić rejestrację."
