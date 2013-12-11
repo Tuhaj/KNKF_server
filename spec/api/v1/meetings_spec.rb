@@ -18,5 +18,14 @@ context "meetings viewable by this user" do
 			m["name"] == meeting.name
 		end.should be_true
 	end
-end
+
+	it "xml" do
+		get url, format: :xml, authentication_token: user.authentication_token
+
+		meetings_xml = Meeting.all.to_xml
+		response.body.should eql(meetings_xml)
+		response.status.should eql(200)
+		end
+
+	end
 end

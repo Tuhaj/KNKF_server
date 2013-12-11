@@ -1,6 +1,7 @@
 class Api::V1::BaseController < ActionController::Base
 	 skip_before_filter :verify_authenticity_token
   	 respond_to :json
+     respond_to :xml
 
      before_filter :authenticate_user_from_token!
 
