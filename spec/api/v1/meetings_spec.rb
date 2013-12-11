@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe "/api/v1/meetings", :type => :api do
-let!(:user) { build(:user) }
+let!(:user) { create(:user) }
 let!(:meeting) { create(:meeting)}
 # before do
 # 	user.permissions.create!(:action => "view", :thing => meeting)
