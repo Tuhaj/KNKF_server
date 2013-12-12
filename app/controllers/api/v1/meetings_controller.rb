@@ -6,4 +6,9 @@ class Api::V1::MeetingsController < Api::V1::BaseController
 	def show
 		respond_with(Meeting.find(params[:id]))
 	end
+
+	def create
+	
+	end
+
 end

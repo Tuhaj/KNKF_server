@@ -46,4 +46,26 @@ describe "/api/v1/meetings" do
 			response.status.should eql(200)
 		end
 	end
+
+		context "creating a meeting" do
+
+	  let(:url) { "/api/v1/meetings" }
+
+	  it "successful JSON" do
+	    post url, format: :json,
+			                meeting: {
+			                  name: "Test_Created_Meeting"
+			                }
+
+	    meeting = Meeting.find_by_name!("Test_Created_Meeting")
+	    route = "/api/v1/meetings/#{meeting.id}"
+
+	    last_response.status.should eql(201)
+	    last_response.headers["Location"].should eql(route) 
+
+	    last_response.body.should eql(meeting.to_json)
+	  end
+	end
+
+
 end
