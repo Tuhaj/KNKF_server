@@ -38,32 +38,30 @@ describe "/api/v1/meetings" do
 
 
 		it "shows meeting" do
-			puts meeting.inspect
 			get url, format: :json, authentication_token: user.authentication_token
-			puts url
-			puts response
 			response.body.should eql(meeting.to_json)
 			response.status.should eql(200)
 		end
 	end
-
 		context "creating a meeting" do
 
 	  let(:url) { "/api/v1/meetings" }
 
 	  it "successful JSON" do
-	    post url, format: :json,
+	    post url, format: :json, authentication_token: user.authentication_token,
 			                meeting: {
-			                  name: "Test_Created_Meeting"
+			                  name: "Test_Created_Meeting",
+			                  date: "2014-12-12"
 			                }
 
 	    meeting = Meeting.find_by_name!("Test_Created_Meeting")
+	    puts meeting.inspect
 	    route = "/api/v1/meetings/#{meeting.id}"
 
-	    last_response.status.should eql(201)
-	    last_response.headers["Location"].should eql(route) 
+	    response.status.should eql(201)
+	    response.headers["Location"].should eql(route) 
 
-	    last_response.body.should eql(meeting.to_json)
+	    response.body.should eql(meeting.to_json)
 	  end
 	end
 

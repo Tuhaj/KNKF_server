@@ -6,6 +6,7 @@ class Ability
  	can :destroy, Reading, user_id: user.id
  	can :destroy, Meeting, user_id: user.id
  	can :edit, Meeting, user_id: user.id
+ 	can :create, Meeting, user_id: user.id
  	
   end
 end
