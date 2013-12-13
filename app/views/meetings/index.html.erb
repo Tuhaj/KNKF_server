@@ -8,7 +8,7 @@
   <%= link_to 'nowe spotkanie', new_meeting_path, class: "btn btn-link" %>
 <% end %>
 
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered", id="lista_spotkan">
 
   <thead>
   <tr>
@@ -28,7 +28,7 @@
       <tr>
         <td><%= meeting.name %></td>
         <td><%= meeting.date %></td>
-        <td><%= link_to "spotkanie nr #{meeting.id}", meeting, class: "btn btn-link" %></td>
+        <td class="links_to_show"><%= link_to "spotkanie nr #{meeting.id}", meeting, class: "btn btn-link" %></td>
 
         <% if meeting.is_user_in_meeting?(current_user) %>
         <td><%= link_to 'wypisz się', meeting_remove_me_path(meeting), class: "btn btn-link", method: :delete %></td>
