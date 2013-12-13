@@ -1,7 +1,7 @@
 class Api::V1::BaseController < ActionController::Base
-	 skip_before_filter :verify_authenticity_token
+	   
+     skip_before_filter :verify_authenticity_token
   	 respond_to :json, :xml
-
      before_filter :authenticate_user_from_token!
 
 	def authenticate_user_from_token!
