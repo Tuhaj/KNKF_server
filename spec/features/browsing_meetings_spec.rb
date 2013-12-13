@@ -2,14 +2,36 @@ require 'spec_helper'
 
 describe "browsing meetings" do
 
+  def create_meeting
+    visit '/meetings'
+    click_link "nowe spotkanie"
+    fill_in("meeting_name", with: "Fun")
+    fill_in("meeting_date", with: "2025-01-01")
+    click_button("Utwórz")
+  end
+
 context 'user_guest_logged_in' do
   before(:each) do
     create(:user_guest)
     visit '/users/sign_in'
-    fill_in("user_email", with: "zrazic@wp.pl")
+    fill_in("user_email", with: "Eustachy@tester.pl")
     fill_in("user_password", with: "secretly_created")
     click_button("Zaloguj")
   end
+
+  it "shows information about beeing guest" do
+    page.should have_text "masz uprawnienia gościa"
+  end
+
+  it "doesn't show 'nowe spotkanie' button " do
+    visit '/meetings'
+    page.should_not have_text "nowe spotkanie"
+  end
+
+  it "creating new meeting should not be possible" do
+    expect{create_meeting}.to raise_error(Capybara::ElementNotFound)
+  end
+
 end
 
   context 'user_logged_in' do
@@ -20,16 +42,7 @@ end
         fill_in("user_email", with: "zrazic@wp.pl")
         fill_in("user_password", with: "secretly_created")
         click_button("Zaloguj")
-      end
-
-      def create_meeting
-        visit '/meetings'
-        click_link "nowe spotkanie"
-        fill_in("meeting_name", with: "Fun")
-        fill_in("meeting_date", with: "2025-01-01")
-        click_button("Utwórz")
-      end
-   	
+      end   	
 
     it "shows meetings list with their names on /meetings" do
 

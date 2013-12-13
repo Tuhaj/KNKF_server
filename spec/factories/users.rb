@@ -6,7 +6,7 @@ FactoryGirl.define do
   	knkf_member true
   end
 
-    factory :user_guest do
+    factory :user_guest, :class => 'User' do
   	email "Eustachy@tester.pl"
   	full_name "Eustachy Rokita"
   	password "secretly_created"
