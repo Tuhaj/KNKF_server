@@ -1,23 +1,18 @@
-
 <h1>Spotkanie <%= @meeting.name %></h1>
-
-<div class "align_left">
-
-  <li>Nazwa spotkania: <%= @meeting.name %></li>
-  <li>Opis: <%= @meeting.description %></li>
-  <li>Data: <%= @meeting.date %></li>
-  <% if @meeting.reading %>
-  <li>Lektura: <%= @meeting.reading.author %> : <%=  @meeting.reading.title  %></li>
-  <% else %>
-  </br>
-  <div> Lektura nie została jeszcze ustalona </div>
-  <% if current_user.referee %>
-  <div ><%= link_to 'Zakończ głosowanie - zaloguj się jako administrator', new_admin_session_path, class: "btn", :method =>:get %>  </div>
-  <% end %>
-
-  <% end %>
-
-</div>
+<table class="table">
+  <tr><td>Opis:</td></tr>
+  <tr><td><%= @meeting.description %></td></tr>
+  <tr><td>Data: <%= @meeting.date %></td></tr>
+    <% if @meeting.reading %>
+      <tr><td>Lektura: <%= @meeting.reading.author %> : <%=  @meeting.reading.title  %></td></tr>
+    <% else %>
+      </br>
+      <tr><td> Lektura nie została jeszcze ustalona </td></tr>
+      <% if current_user.referee %>
+        <tr><td><%= link_to 'Zakończ głosowanie - zaloguj się jako administrator', new_admin_session_path, class: "btn", :method =>:get %></td></tr>
+      <% end %>
+    <% end %>
+</table>
 
 <h4>Zapisane osoby</h4>
   <table class="table table-striped table-bordered">
