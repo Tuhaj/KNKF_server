@@ -1,22 +1,18 @@
 <%= form_for @message, url: {action: "create"} do |f| %>
-    <% if @message.errors.any? %>
+  <% if @message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@message.errors.count, "error") %> uniemożliwiło stworzenie nowego zgłoszenia</h2>
-
       <ul>
-      <% @message.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @message.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-<p>Proszę wypełnij formularz</p>
-
-<p> Chcę dołączyć do koła: <%= f.check_box :membership, class: "form-control-static" %> 
-<p> Temat: <%= f.text_field :title, class: "form-control-static" %> </p>
-<p> Teść: <%= f.text_area :content, class: "form-control-static", size: "80x15" %> </p>
-	<%= f.submit "Wyślij" %>
-
-
+  <p>Proszę wypełnij formularz</p>
+  <p> Chcę dołączyć do koła: <%= f.check_box :membership, class: "form-control-static" %> 
+  <p> Temat: <%= f.text_field :title, class: "form-control-static" %> </p>
+  <p> Teść: <%= f.text_area :content, class: "form-control-static", size: "80x15" %> </p>
+  <%= f.submit "Wyślij" %>
 <% end %>

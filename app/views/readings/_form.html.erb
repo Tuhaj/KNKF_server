@@ -1,23 +1,16 @@
-
-
 <%= form_for @reading do |f| %>
-    <% if @reading.errors.any? %>
+  <% if @reading.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@reading.errors.count, "error") %> uniemożliwiło dodanie nowej lektury</h2>
-
       <ul>
-      <% @reading.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @reading.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
-
   <p> Autor: <%= f.text_field :author, class: "form-control-static" %> </p>
   <p> Tytuł: <%= f.text_field :title, class: "form-control-static" %> </p>
   <p> Opis: <%= f.text_area :description, class: "form-control-static", size: "40x10"%> </p>
-  	  		<%= f.submit "Dodaj" %>
-
-
+  <%= f.submit "Dodaj" %>
 <% end %>
