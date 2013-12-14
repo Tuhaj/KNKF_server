@@ -1,24 +1,24 @@
 class MeetingsController < ApplicationController
 
-    before_filter :authenticate_user!, only: [:new, :index, :show, :edit, :update, :my, :add_me, :remove_me, :end_voting]
-    before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-    before_action :find_meeting, only: [:add_me,:remove_me, :end_voting]
+  before_filter :authenticate_user!, only: [:new, :index, :show, :edit, :update, :my, :add_me, :remove_me, :end_voting]
+  before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :find_meeting, only: [:add_me,:remove_me, :end_voting]
 
 
-    def index
-      @only_mine = params[:my]
-      if @only_mine
-        @meetings = current_user.meetings
-      else
-        @meetings = Meeting.where("date>=?", Date.today)
-      end
+  def index
+    @only_mine = params[:my]
+    if @only_mine
+      @meetings = current_user.meetings
+    else
+      @meetings = Meeting.where("date>=?", Date.today)
     end
+  end
 
-    def show
-     @meeting = Meeting.find(params[:id])
-   end
+  def show
+    @meeting = Meeting.find(params[:id])
+  end
 
-   def new
+  def new
     @meeting = Meeting.new
   end
 
@@ -53,6 +53,7 @@ class MeetingsController < ApplicationController
     @meeting.users << current_user
     redirect_to @meeting
   end
+
   def remove_me
     @meeting.users.destroy(current_user)
     redirect_to my_meetings_path
@@ -72,7 +73,6 @@ class MeetingsController < ApplicationController
   def find_meeting
     @meeting = Meeting.find(params[:meeting_id])
   end 
-
 
   def meeting_params
     params.require(:meeting).permit(:name, :description, :date, :users)
