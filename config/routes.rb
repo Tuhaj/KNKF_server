@@ -5,7 +5,7 @@ KNKF::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :meetings
+      resources :meetings, :readings
     end
   end
 
