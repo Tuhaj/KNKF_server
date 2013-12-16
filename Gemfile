@@ -29,6 +29,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rack-test'
   gem 'capybara'
+  gem 'debugger'
 end
 
 gem 'jbuilder', '~> 1.2'

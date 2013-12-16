@@ -1,6 +1,7 @@
 class Api::V1::ReadingsController < Api::V1::BaseController
 
   authorize_resource
+  load_resource
 
   def index
     respond_with(Reading.active)
@@ -17,6 +18,12 @@ class Api::V1::ReadingsController < Api::V1::BaseController
     else
       respond_with(reading)
     end
+  end
+
+  def destroy
+    reading = Reading.find(params[:id])
+    reading.destroy
+    respond_with(reading)
   end
 
   private

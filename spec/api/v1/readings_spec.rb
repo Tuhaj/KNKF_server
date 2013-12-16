@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe "/api/v1/readings" do
+describe "/api/v1/readings for knkf member user" do
   let!(:user) { create(:user) }
   let!(:reading) { create(:reading)}
   context "readings viewable by this user" do
@@ -28,10 +28,7 @@ describe "/api/v1/readings" do
       response.status.should eql(200)
     end
   end
-
-  describe "/api/v1/readings/:id" do
-    let!(:reading) { create(:reading)}
-    let!(:user) { create(:user) }
+  context "readings show method" do
     let(:url) { "/api/v1/readings/#{reading.id}" }
 
     it "shows reading" do
@@ -40,7 +37,8 @@ describe "/api/v1/readings" do
       response.status.should eql(200)
     end
   end
-    context "creating a reading" do
+
+  context "KNKF user creates a reading" do
 
     let(:url) { "/api/v1/readings" }
 
@@ -58,23 +56,42 @@ describe "/api/v1/readings" do
       response.body.should eql(reading.to_json)
     end
   end
+
+  context "KNKF user deletes a reading" do
+
+    let(:url) { "/api/v1/readings/#{@reading.id}" }
+    it "knkf user destroys his own reading" do
+      reading.user = user
+      expect {delete url, format: :json, authentication_token: user.authentication_token}.to change(Reading, :count).by(-1)
+    end
+    let(:url) { "/api/v1/readings/#{reading.id}" }
+    it "knkf user destroys alien reading" do
+      expect {delete url, format: :json, authentication_token: user.authentication_token}.to raise_error(CanCan::AccessDenied)
+    end
+  end
 end
 
-describe "/api/v1/readings" do
+describe "/api/v1/readings for guest user" do
   let!(:user) { create(:user_guest) }
   let!(:reading) { create(:reading)}
   context "readings viewable by this user" do
     let(:url) { "/api/v1/readings" }
       context "creating a reading" do
-
-      it "Guest user can't create reading" do
-        expect {
-        post url, format: :json, authentication_token: user.authentication_token,
-        reading: {title: "Test_Created_reading", author: "Anonymus"}
-        }.to raise_error(CanCan::AccessDenied)
-        expect {reading = Reading.find_by_title!("Test_Created_reading")}.to raise_error(ActiveRecord::RecordNotFound)
-        route = "/api/v1/readings/#{reading.id}"
+        it "Guest user can't create reading" do
+          expect {
+          post url, format: :json, authentication_token: user.authentication_token,
+          reading: {title: "Test_Created_reading", author: "Anonymus"}
+          }.to raise_error(CanCan::AccessDenied)
+          expect {reading = Reading.find_by_title!("Test_Created_reading")}.to raise_error(ActiveRecord::RecordNotFound)
+          route = "/api/v1/readings/#{reading.id}"
       end
+    end
+  end 
+  context "KNKF user deletes a reading" do
+    let(:url) { "/api/v1/readings/#{reading.id}" }
+    it "knkf user destroys his own reading" do
+      reading = Reading.last
+      expect {delete url, format: :json, authentication_token: user.authentication_token}.to raise_error(CanCan::AccessDenied)
     end
   end
 end
