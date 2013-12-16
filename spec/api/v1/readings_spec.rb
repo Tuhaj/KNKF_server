@@ -1,6 +1,7 @@
+require "spec_helper"
+
 describe "/api/v1/readings" do
   let!(:user) { create(:user) }
-  let!(:user_guest) { create(:user_guest) }
   let!(:reading) { create(:reading)}
   context "readings viewable by this user" do
     let(:url) { "/api/v1/readings" }
@@ -47,14 +48,33 @@ describe "/api/v1/readings" do
       post url, format: :json, authentication_token: user.authentication_token,
       reading: {title: "Test_Created_reading", author: "Anonymus"}
 
+
       reading = Reading.find_by_title!("Test_Created_reading")
-      puts reading.inspect
       route = "/api/v1/readings/#{reading.id}"
 
       response.status.should eql(201)
       response.headers["Location"].should eql(route) 
 
       response.body.should eql(reading.to_json)
+    end
+  end
+end
+
+describe "/api/v1/readings" do
+  let!(:user) { create(:user_guest) }
+  let!(:reading) { create(:reading)}
+  context "readings viewable by this user" do
+    let(:url) { "/api/v1/readings" }
+      context "creating a reading" do
+
+      it "Guest user can't create reading" do
+        expect {
+        post url, format: :json, authentication_token: user.authentication_token,
+        reading: {title: "Test_Created_reading", author: "Anonymus"}
+        }.to raise_error(CanCan::AccessDenied)
+        expect {reading = Reading.find_by_title!("Test_Created_reading")}.to raise_error(ActiveRecord::RecordNotFound)
+        route = "/api/v1/readings/#{reading.id}"
+      end
     end
   end
 end
