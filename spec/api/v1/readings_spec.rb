@@ -59,9 +59,10 @@ describe "/api/v1/readings for knkf member user" do
 
   context "KNKF user deletes a reading" do
 
-    let(:url) { "/api/v1/readings/#{@reading.id}" }
+    let(:url) { "/api/v1/readings/#{reading.id}" }
     it "knkf user destroys his own reading" do
       reading.user = user
+      reading.save!
       expect {delete url, format: :json, authentication_token: user.authentication_token}.to change(Reading, :count).by(-1)
     end
     let(:url) { "/api/v1/readings/#{reading.id}" }

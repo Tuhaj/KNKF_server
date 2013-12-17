@@ -1,29 +1,29 @@
 class Api::V1::ReadingsController < Api::V1::BaseController
-
-  authorize_resource
+  
   load_resource
+  authorize_resource
+  skip_load_resource only: :create
 
   def index
     respond_with(Reading.active)
   end
 
   def show
-    respond_with(Reading.find(params[:id]))
+     respond_with(@reading)
   end
 
   def create
-    reading = Reading.new(reading_params)
-    if reading.save
-      respond_with(reading, location: api_v1_reading_path(reading))
+    @reading = Reading.new(reading_params)
+    if @reading.save
+      respond_with(@reading, location: api_v1_reading_path(@reading))
     else
-      respond_with(reading)
+      respond_with(@reading)
     end
   end
 
   def destroy
-    reading = Reading.find(params[:id])
-    reading.destroy
-    respond_with(reading)
+    @reading.destroy
+    respond_with(@reading)
   end
 
   private

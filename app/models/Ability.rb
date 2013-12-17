@@ -7,10 +7,10 @@ class Ability
     if user.knkf_member?
       can :destroy, Reading, user_id: user.id
       can :edit, Reading, user_id: user.id
-      can :create, Reading, user_id: user.id
+      can :create, Reading
       can :destroy, Meeting, user_id: user.id
       can :edit, Meeting, user_id: user.id
-      can :create, Meeting, user_id: user.id
+      can :create, Meeting
     end
   end
 end
