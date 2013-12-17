@@ -1,0 +1,39 @@
+  <tbody>
+    <% @readings.each do |reading| %>
+      <tr>
+        <td> <%= link_to reading.author, reading %> </td>
+        <td> <%= reading.title %> </td>
+        <td> <%= link_to reading.votes_for %> </td>
+        
+        <% if reading.meeting %>
+        <td><%= link_to reading.meeting.name, meeting_path(reading.meeting) %> </td>
+        <% else %>
+        <td> W trakcie głosowania</td>
+        <% end %>
+
+        <% if reading.meeting %> 
+        <td>Głosowanie zamknięte</td>
+        <% else %>
+          <% if current_user.knkf_member %>
+            <% if current_user.has_a_vote %>
+              <td> <%= link_to 'Zagłosuj', reading_vote_path(reading), method: :post %> </td>
+            <% else %>
+              <% if reading == current_user.reading %>
+                <td> <%= link_to 'Wycofaj głos', reading_unvote_path(reading), method: :post %> </td>
+              <% else %>
+                <td></td>
+              <% end %>
+            <% end %>
+          <% else %>
+            <td>Jako gość nie możesz głosować</td>
+          <% end %>
+        <% end %>
+        
+        <% if can? :destroy, reading %>
+          <td> <%= link_to 'Skasuj', reading, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %> </td>
+          <% else %>
+          <td> </td>
+        <% end %>   
+      </tr>
+    <% end %>
+  </tbody>

@@ -2,53 +2,61 @@ require 'spec_helper'
 
 describe ReadingsController do
 
-  describe "GET 'index'" do
-    xit "returns http success" do
-      get 'index'
-      response.should be_success
-    end
+  before :each do
+    @user = create(:user)
+    @reading = create(:reading, :user_id => @user.id)
+    sign_in :user, @user
+    controller.stub(:current_user).and_return(@user)
   end
 
-  describe "GET 'show'" do
-    xit "returns http success" do
-      get 'show'
-      response.should be_success
+  context 'checks response for actions' do
+    describe "GET 'index'" do
+      it "returns http success" do
+        get 'index'
+        response.should be_success
+      end
     end
-  end
 
-  describe "GET 'new'" do
-    xit "returns http success" do
-      get 'new'
-      response.should be_success
+    describe "GET 'show'" do
+      it "returns http success" do
+        get :show, id: @reading.id
+        response.should be_success
+      end
     end
-  end
 
-  describe "GET 'create'" do
-    xit "returns http success" do
-      get 'create'
-      response.should be_success
+    describe "GET 'new'" do
+      it "returns http success" do
+        get 'new'
+        response.should be_success
+      end
     end
-  end
 
-  describe "GET 'edit'" do
-    xit "returns http success" do
-      get 'edit'
-      response.should be_success
-    end
-  end
+    # describe "GET 'create'" do
+    #   it "returns http success" do
+    #     post 'create'
+    #     response.should be_success
+    #   end
+    # end
 
-  describe "GET 'update'" do
-    xit "returns http success" do
-      get 'update'
-      response.should be_success
-    end
-  end
+    # describe "GET 'edit'" do
+    #   it "returns http success" do
+    #     get 'edit'
+    #     response.should be_success
+    #   end
+    # end
 
-  describe "GET 'destroy'" do
-    xit "returns http success" do
-      get 'destroy'
-      response.should be_success
-    end
-  end
+    # describe "GET 'update'" do
+    #   it "returns http success" do
+    #     get 'update'
+    #     response.should be_success
+    #   end
+    # end
 
+    # describe "GET 'destroy'" do
+    #   it "returns http success" do
+    #     get 'destroy'
+    #     response.should be_success
+    #   end
+    # end
+  end
 end

@@ -1,0 +1,12 @@
+<h1>Lektura <%= @reading.title %></h1>
+<table class="table">
+<br>
+<br>
+  <tr><td><%= user_name(@reading.user) %></td></tr>
+  <tr><td>Opis:<%= @reading.description %></td></tr>
+  <tr><td>Autor: <%= @reading.author %></td></tr>
+  <tr><td>Oddano głosów: <%= @reading.votes_for %></td></tr>
+  <tr><td><%= reading_status(@reading) %></td></tr>
+
+</table>
+<%= link_to 'Lektury', readings_path, class: "btn btn-link" %>
