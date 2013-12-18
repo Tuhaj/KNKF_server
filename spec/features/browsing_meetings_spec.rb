@@ -4,7 +4,7 @@ describe "browsing meetings" do
 
   def create_meeting
     visit '/meetings'
-    click_link "nowe spotkanie"
+    click_link "Nowe spotkanie"
     fill_in("meeting_name", with: "Fun")
     fill_in("meeting_date", with: "2025-01-01")
     click_button("Utwórz")
@@ -24,9 +24,9 @@ describe "browsing meetings" do
       page.should have_text "masz uprawnienia gościa"
     end
 
-    it "doesn't show 'nowe spotkanie' button " do
+    it "doesn't show 'Nowe spotkanie' button " do
       visit '/meetings'
-      page.should_not have_text "nowe spotkanie"
+      page.should_not have_text "Nowe spotkanie"
     end
 
     it "creating new meeting should not be possible" do
@@ -47,11 +47,11 @@ describe "browsing meetings" do
     it "shows meetings list with their names on /meetings" do
       spotkanie = create(:meeting, name: "Spotkanie pierwsze", date: "2024-12-12")
       visit '/meetings'
-      page.should have_text "nowe spotkanie"
+      page.should have_text "Nowe spotkanie"
       within('#lista_spotkan') do
         page.should have_text "Spotkanie pierwsze"
         page.should have_text "2024"
-        click_link "spotkanie nr #{spotkanie.id}"
+        click_link "Spotkanie nr #{spotkanie.id}"
    	  end
   	 	within('body') do
         page.should have_text "Lektura nie została jeszcze ustalona"
@@ -60,7 +60,7 @@ describe "browsing meetings" do
 
     it "new meeting can be created on /meetings" do
       visit '/meetings'
-      page.should have_text "nowe spotkanie"
+      page.should have_text "Nowe spotkanie"
       create_meeting
       page.should have_text "Spotkanie Fun"
       page.should have_text "wypisz się"
