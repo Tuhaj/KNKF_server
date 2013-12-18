@@ -1,8 +1,4 @@
-<% if @only_mine %>
-  <h1>Twoje spotkania</h1>
-<% else %>
-  <h1>Nadchodzące spotkania</h1>
-<% end %>
+<h1><%= heading_my_or_all %></h1>
 
 <% if current_user && current_user.knkf_member? %>
   <%= link_to 'nowe spotkanie', new_meeting_path, class: "btn btn-link" %>

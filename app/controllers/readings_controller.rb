@@ -8,7 +8,6 @@ class ReadingsController < ApplicationController
   end
 
   def show
-    @reading = Reading.find(params[:id])
   end
 
   def new
@@ -28,7 +27,6 @@ class ReadingsController < ApplicationController
   end
 
   def edit
-    @reading = Reading.find(params[:id])
   end
 
   def update

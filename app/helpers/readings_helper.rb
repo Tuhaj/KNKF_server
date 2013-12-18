@@ -3,6 +3,8 @@ module ReadingsHelper
     reading.is_reworked ? "Kandydatura nieaktualna" : "Kandydatura aktualna"
   end
 
+  #VOTING SYSTEM
+
   def vote_info(reading)
     reading.meeting ? link_to(reading.meeting.name, meeting_path(reading.meeting)) : "W trakcie głosowania"
   end
@@ -26,4 +28,5 @@ module ReadingsHelper
   def voting_open_for_reading(reading)
     reading.meeting ? "Głosowanie zamknięte" : display_voting_for_members(reading)
   end
+
 end

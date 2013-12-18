@@ -31,4 +31,19 @@ module UserHelper
     end
   end
 
+  def display_destroy_reading(reading)
+    if can? :destroy, reading
+      link_to('Skasuj', reading, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' })
+    else
+      ""
+    end
+  end
+
+  def heading_my_or_all
+    if @only_mine
+      "Twoje spotkania"
+    else
+      "Nadchodzące spotkania"
+    end
+  end
 end

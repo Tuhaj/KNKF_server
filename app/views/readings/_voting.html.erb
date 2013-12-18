@@ -1,16 +1,12 @@
-  <tbody>
-    <% @readings.each do |reading| %>
-      <tr>
-        <td> <%= link_to reading.author, reading %> </td>
-        <td> <%= reading.title %> </td>
-        <td> <%= link_to reading.votes_for %> </td>
-        <td> <%= vote_info(reading) %> </td>
-        <td> <%= voting_open_for_reading(reading) %> </td>
-        <% if can? :destroy, reading %>
-          <td> <%= link_to 'Skasuj', reading, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %> </td>
-          <% else %>
-          <td> </td>
-        <% end %>   
-      </tr>
-    <% end %>
-  </tbody>
+<tbody>
+  <% @readings.each do |reading| %>
+    <tr>
+      <td> <%= link_to reading.author, reading %> </td>
+      <td> <%= reading.title %> </td>
+      <td> <%= link_to reading.votes_for %> </td>
+      <td> <%= vote_info(reading) %> </td>
+      <td> <%= voting_open_for_reading(reading) %> </td>
+      <td> <%= display_destroy_reading(reading) %> </td> 
+    </tr>
+  <% end %>
+</tbody>
