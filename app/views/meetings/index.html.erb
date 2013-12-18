@@ -1,7 +1,7 @@
 <h1><%= heading_my_or_all %></h1>
 
 <% if current_user && current_user.knkf_member? %>
-  <%= link_to 'nowe spotkanie', new_meeting_path, class: "btn btn-link" %>
+  <%= link_to t('new_meeting'), new_meeting_path, class: "btn btn-link" %>
 <% end %>
 
 <table class="table table-striped table-bordered", id="lista_spotkan">
@@ -9,11 +9,11 @@
   <thead>
   <tr>
 
-    <th>Nazwa</th>
-    <th>Data</th>
-    <th>Link</th>
-    <th>Weź udział</th>
-    <th>Edytuj/Usuń</th>
+    <th><%= t("name") %></th>
+    <th><%= t("date") %></th>
+    <th><%= t("link") %></th>
+    <th><%= t("take_part") %></th>
+    <th><%= t("edit_destroy") %></th>
 
 
   </tr>
@@ -23,7 +23,7 @@
       <tr>
         <td><%= meeting.name %></td>
         <td><%= meeting.date %></td>
-        <td><%= link_to "spotkanie nr #{meeting.id}", meeting, class: "btn btn-link" %></td>
+        <td><%= link_to t("meeting_link") + "#{meeting.id}", meeting, class: "btn btn-link" %></td>
         <td><%= relation_to_meeting(meeting) %></td>
         <td><%= destroy_meeting_if_can(meeting) %></td>
       </tr>
@@ -31,4 +31,4 @@
   </tbody>
 </table>
 
-<%= link_to 'strona główna', home_index_path, class: "btn btn-link" %>
+<%= link_to t('main_page'), home_index_path, class: "btn btn-link" %>
