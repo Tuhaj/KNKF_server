@@ -28,16 +28,8 @@
     <tr>
       <td><%= a.full_name %></td>
       <td><%= a.degree %></td>
-      <% if a.knkf_member? %>
-        <td>KNKF</td>
-      <% else %>
-        <td>gość</td>
-      <% end %>
-      <% if a == current_user %>
-        <td> <%= link_to 'wypisz się', meeting_remove_me_path(@meeting), class: "btn btn-link", :method =>:delete %> </td>
-      <% else %>
-        <td></td>
-      <% end %>
+      <td><%= membership_info(a) %></td>
+      <td><%= sign_out_from_meeting(a) %></td>
     </tr>
   <% end %>
 </table>
