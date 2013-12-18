@@ -27,17 +27,9 @@
       <tr>
         <td><%= meeting.name %></td>
         <td><%= meeting.date %></td>
-        <td class="links_to_show"><%= link_to "spotkanie nr #{meeting.id}", meeting, class: "btn btn-link" %></td>
-        <% if meeting.is_user_in_meeting?(current_user) %>
-          <td><%= link_to 'wypisz się', meeting_remove_me_path(meeting), class: "btn btn-link", method: :delete %></td>
-        <% else %>
-          <td><%= link_to 'weź udział', meeting_add_me_path(meeting), class: "btn btn-link", method: :post %></td>
-        <% end %>
-        <% if can? :destroy, meeting %>
-         <td><%= link_to 'Edytuj', edit_meeting_path(meeting), class: "btn btn-link" %> <%= link_to 'Usuń', meeting, class: "btn btn-link", method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' } %> </td>
-        <% else %>
-          <td></td>
-        <% end %>
+        <td><%= link_to "spotkanie nr #{meeting.id}", meeting, class: "btn btn-link" %></td>
+        <td><%= relation_to_meeting(meeting) %></td>
+        <td><%= destroy_meeting_if_can(meeting) %></td>
       </tr>
     <% end %>
   </tbody>
