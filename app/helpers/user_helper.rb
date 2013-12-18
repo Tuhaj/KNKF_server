@@ -1,18 +1,10 @@
 module UserHelper
   def user_name(user)
-    if user.present?
-      "Zaproponowane przez: " + user.full_name
-    else
-      ""
-    end
+    user.present? ? "Zaproponowane przez: " + user.full_name : ""
   end  
 
   def membership_info(user)
-    if user.knkf_member?
-      "KNKF"
-    else
-      "gość"
-    end
+    user.knkf_member? ? "KNKF" : "gość"
   end
 
   def sign_out_from_meeting(user)
