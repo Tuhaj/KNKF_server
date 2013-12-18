@@ -25,7 +25,7 @@ module UserHelper
 
   def destroy_meeting_if_can(meeting)
     if can? :destroy, meeting
-      link_to('Usuń', meeting, class: "btn btn-link", method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć?' }) + link_to('Edytuj', edit_meeting_path(meeting), class: "btn btn-link")
+      link_to('Usuń', meeting, class: "btn btn-link", method: :delete, data: { confirm: t("confirm_deletion") }) + link_to('Edytuj', edit_meeting_path(meeting), class: "btn btn-link")
     else
       ""
     end

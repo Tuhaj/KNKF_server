@@ -1,0 +1,57 @@
+pl:
+  devise:
+    confirmations:
+      confirmed: "Konto zostało potwierdzone."
+      send_instructions: "Otrzymasz email z instrukcją jak potwierdzić swoje konto w przeciągu kilku minut."
+      send_paranoid_instructions: "Twój email już istnieje w naszej bazie danych, otrzymasz email z instrukcją w ciągu kilku minut."
+    failure:
+      already_authenticated: "Już zalogowano"
+      inactive: "Twoje konto nie zostało jeszcze aktywowane."
+      invalid: "Niewłaściwe hasło lub email."
+      locked: "Konto zostało zablokowane."
+      last_attempt: "Po złym użyciu tej szansy konto zostanie zablokowane."
+      not_found_in_database: "Niewłaściwe hasło lub email."
+      timeout: "Sesja wygasła. Proszę zaloguj się, by kontynuować."
+      unauthenticated: "Aby kontynuować należy się zalogować lub zarejestrować."
+      unconfirmed: "Należy potwierdzić hasło by kontynuować."
+    mailer:
+      confirmation_instructions:
+        subject: "Instrukcja potwierdzenia"
+      reset_password_instructions:
+        subject: "Instrukcje ponownego ustawienia hasła"
+      unlock_instructions:
+        subject: "Instrukcja odblokowania"
+    omniauth_callbacks:
+      failure: "Nie można uwierzytelnić przy pomocy %{kind} z powodu\"%{reason}\"."
+      success: "Uwierzytelnienie przy pomocy konta %{kind} zakończono powodzeniem."
+    passwords:
+      no_token: "Na tę stronę można wejść tylko przy pomocy przesłanego łącza emailowego. Upewnij się, że adres URL jest wprowadzony w całości."
+      send_instructions: "Otrzymasz maila z instrukcją jak ponownie ustawić hasło"
+      send_paranoid_instructions: "Jeśli Twoj email jest już w naszej bazie danych, otrzymasz łącze do odzyskania hasła w ciągu kilku minut."
+      updated: "Hasło zostało zmienione i zalogowano."
+      updated_not_active: "Twoje hasło zostało zmienione."
+    registrations:
+      destroyed: "Twoje konto zostało skutecznie skasowane. Mamy nadzieje, że zobaczymy się w krótce."
+      signed_up: "Witaj! Twoje konto jest aktywowane. Jeśli chcesz należeć do koła, kliknij 'dołącz do koła' i wyślij uzupełniony formularz"
+      signed_up_but_inactive: "Zarejestrowano. Nie mogliśmy Cię jeszcze zalogować, ponieważ potrzebne jest jeszcze potwierdzenie."
+      signed_up_but_locked: "Zarejestrowaliśmy Cię, jednak nie mogliśmy Cię zalogować poniważ Twoje konto jest zablokowane."
+      signed_up_but_unconfirmed: "Wiadomość z łączem do potwierdzenia została wysłana na Twoje konto. Proszę otwórz łącze by potwiedzić rejestrację."
+      update_needs_confirmation: "Udało się zaktualizować konto, jednak chcielibyśmy zweryfikować Twój adres e-mail. Proszę, odtwórz swoją pocztę i kliknij łącze, które przesłaliśmy, by zakończyć aktualizację danych."
+      updated: "Zaktualizowaliśmy dane Twojego konta :-)"
+    sessions:
+      signed_in: "Zalogowaliśmy Cię"
+      signed_out: "Wylogowaliśmy Cię"
+    unlocks:
+      send_instructions: "Otrzymasz email z informacją jak odblokować konto w ciągu kilku minut."
+      send_paranoid_instructions: "Jeśli twoje konto istnieje, otrzymasz email z instrukcją jak je odblokować w ciągu kilku minut."
+      unlocked: "Twoje konto zostało odblokowane. Proszę zaloguj się by kontynuować."
+  errors:
+    messages:
+      already_confirmed: "zostało potwierdzone, proszę zaloguj się"
+      confirmation_period_expired: "należy potwierdzić przy pomocy %{period}, proszę zażądaj nowego"
+      expired: "wygasło, proszę zażądaj kolejnego"
+      not_found: "nie znaleziono"
+      not_locked: "nie zostało zablokowane"
+      not_saved:
+        one: "Jeden błąd nie pozwolił, by %{resource} zostało zapisane:"
+        other: "%{count} błędów nie pozwoliło, by %{resource} zostało zapisane:"
