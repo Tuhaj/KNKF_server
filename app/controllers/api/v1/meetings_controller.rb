@@ -1,5 +1,6 @@
 class Api::V1::MeetingsController < Api::V1::BaseController
 
+  
   authorize_resource
 
   def index

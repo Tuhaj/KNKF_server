@@ -59,8 +59,7 @@ describe MeetingsController do
   describe "edit for knkf users" do
 
     it "KNKF user can edit meetings" do
-      meeting = Meeting.last
-      get 'edit', id: meeting.id
+      (get 'edit', id: meeting.id).should be_success
     end
   end
 
@@ -73,7 +72,7 @@ describe MeetingsController do
     end
   end
 
-  describe "GET 'update'" do
+  describe "'update'" do
     xit "returns http success" do
       patch 'update'
       response.should be_success
