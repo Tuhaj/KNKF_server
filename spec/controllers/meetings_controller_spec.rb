@@ -72,17 +72,27 @@ describe MeetingsController do
     end
   end
 
-  describe "'update'" do
-    xit "returns http success" do
-      patch 'update'
-      response.should be_success
+  describe "'update own meeting'" do
+    it "returns http success" do
+      post 'create', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}
+      assigns[:meeting]
+      (post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id).should be_success
     end
   end
 
+  describe "'update alien meeting'" do
+  it "returns http success" do
+    assigns[:meeting]
+    (post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id).should_not be_success
+  end
+end
+
   describe "GET 'destroy'" do
-    xit "returns http success" do
-      delete 'destroy'
-      response.should be_success
+    it "returns http success" do
+      post 'create', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}
+      meeting = Meeting.last
+debugger
+      (delete 'destroy', meeting.id).should be_success
     end
   end
 end
