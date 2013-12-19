@@ -4,6 +4,7 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
   before_action :find_meeting, only: [:add_me,:remove_me, :end_voting]
 
+authorize_resource
 
   def index
     @only_mine = params[:my]

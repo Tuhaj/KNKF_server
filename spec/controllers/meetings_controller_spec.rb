@@ -11,12 +11,16 @@ describe MeetingsController do
   
   let!(:meeting) { create(:meeting)}
   let!(:user) { create(:user) }
-
-  before(:each) do 
-    sign_in user
+  let!(:url) { "/meetings/#{meeting.id}" }
+  before(:each) do
+    unless example.metadata[:skip_before]
+      sign_in user
+    end
   end
 
 
+  # debugger
+  # puts assigns[:meeting].inspect
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # CategoriesController. Be sure to keep this updated too.
@@ -52,13 +56,20 @@ describe MeetingsController do
     end
   end
 
-  describe "edit" do
-
-    # it "should have a current_user" do
-    #   expect(subject.current_user).not_to be_nil
-    # end
+  describe "edit for knkf users" do
 
     it "KNKF user can edit meetings" do
+      meeting = Meeting.last
+      get 'edit', id: meeting.id
+    end
+  end
+
+  describe "edit for guests" do
+    let!(:user) { create(:user_guest) }
+
+    it "guest user cannot edit meetings", skip_before: true do
+      sign_in user
+      expect {get 'edit', id: meeting.id}.to raise_error{CanCan::AccessDenied}
     end
   end
 
@@ -75,5 +86,4 @@ describe MeetingsController do
       response.should be_success
     end
   end
-
 end
