@@ -1,4 +1,5 @@
 pl:
+  send: "Wyślij"
   name: "Nazwa"
   date: "Data"
   link: "Link"
@@ -26,6 +27,7 @@ pl:
   delete: "Usuń"
   edit: "Edytuj"
   club_name: "KOŁO NAUKOWE KSZTAŁCENIA FILOZOFICZNEGO"
+  club_last_name: "DOKTORANTÓW UNIWERSYTETU WARSZAWSKIEGO"
   club_statute: "REGULAMIN KOŁA"
   supervisor: "Opiekun koła"
   club_managment: 'Skład zarządu'
@@ -33,6 +35,7 @@ pl:
   vicedirector: "Wiceprezes:"
   director: "Prezes koła:"
   description: "Opis:"
+  contact_form: "Formularz kontaktowy"
   reading:
     actual: "Kandydatura aktualna"
     inactual: "Kandydatura nieaktualna"
@@ -42,6 +45,13 @@ pl:
     voting_closed: "Głosowanie zamknięte"
     voting_in_progress: "W trakcie głosowania"
   meeting:
+    content: "Teść:"
+    subject: "Temat:"
+    submit: "Utwórz"
+    name: "Nazwa spotkania:"
+    form_errors: "uniemożliwiło stworzenie nowego spotkania"
+    form_incentive: "Proszę wypełnij formularz"
+    join_declaration: "Chcę dołączyć do koła:"
     name: "Spotkanie"
     participants: "Zapisane osoby"
     sign_out: 'wypisz się'
@@ -55,5 +65,7 @@ pl:
     degree: "Stopień"
     member: "Uczestnik"
     no_reading: "Lektura nie została jeszcze ustalona"
+  message:
+    form_errors: "uniemożliwiło stworzenie nowego zgłoszenia"
 
 

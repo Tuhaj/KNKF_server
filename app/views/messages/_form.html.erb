@@ -1,7 +1,7 @@
 <%= form_for @message, url: {action: "create"} do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@message.errors.count, "error") %> uniemożliwiło stworzenie nowego zgłoszenia</h2>
+      <h2><%= pluralize(@message.errors.count, "error") %> <%= t('message.form_errors') %></h2>
       <ul>
         <% @message.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -10,9 +10,9 @@
     </div>
   <% end %>
 
-  <p>Proszę wypełnij formularz</p>
-  <p> Chcę dołączyć do koła: <%= f.check_box :membership, class: "form-control-static" %> 
-  <p> Temat: <%= f.text_field :title, class: "form-control-static" %> </p>
-  <p> Teść: <%= f.text_area :content, class: "form-control-static", size: "80x15" %> </p>
-  <%= f.submit "Wyślij" %>
+  <p> <%= t('meeting.form_incentive') %></p>
+  <p> <%= t('meeting.join_declaration') %> <%= f.check_box :membership, class: "form-control-static" %> </p>
+  <p> <%= t('meeting.subject') %> <%= f.text_field :title, class: "form-control-static" %> </p>
+  <p> <%= t('meeting.content') %> <%= f.text_area :content, class: "form-control-static", size: "80x15" %> </p>
+  <%= f.submit t('send') %>
 <% end %>

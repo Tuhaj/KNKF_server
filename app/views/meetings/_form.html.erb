@@ -1,7 +1,7 @@
 <%= form_for @meeting do |f| %>
   <% if @meeting.errors.any? %>
     <div id="error_explanation">
-    <h2><%= pluralize(@meeting.errors.count, "error") %> uniemożliwiło stworzenie nowego spotkania</h2>
+    <h2><%= pluralize(@meeting.errors.count, "error") %> <%= t("form_errors") %> </h2>
     <ul>
       <% @meeting.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -9,9 +9,9 @@
     </ul>
     </div>
   <% end %>
-<p>Proszę wypełnij formularz</p>
-<p> Nazwa spotkania: <%= f.text_field :name, class: "form-control-static" %> </p>
-<p> Data: <%= f.text_field :date, class: "form-control-static datepicker" %> </p>
-<p> Opis: <%= f.text_area :description, class: "form-control-static" %> </p>
-	  		<%= f.submit "Utwórz" %>
+<p><%= t('meeting.form_incentive') %></p>
+<p> <%= t('meeting.name') %> <%= f.text_field :name, class: "form-control-static" %> </p>
+<p> <%= t('date') %> <%= f.text_field :date, class: "form-control-static datepicker" %> </p>
+<p> <%= t('description') %> <%= f.text_area :description, class: "form-control-static" %> </p>
+	  		<%= f.submit t("meeting.submit") %>
 <% end %>

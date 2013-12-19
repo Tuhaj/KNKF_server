@@ -1,8 +1,8 @@
 
-<h1>KOŁO NAUKOWE KSZTAŁCENIA FILOZOFICZNEGO</h1>
+<h1><%= t('club_name') %></h1>
 <br>
 <%= image_tag('http://uw.edu.pl/images/header.jpg') %>
-<h4>DOKTORANTÓW UNIWERSYTETU WARSZAWSKIEGO</h4>
+<h4><%= t('club_last_name') %></h4>
 
-<%= link_to 'Spotkania', meetings_path, class: "btn btn-link" %>
-<%= link_to 'Wyloguj', destroy_user_session_path, class: "btn btn-link", :method =>'delete' %>
+<%= link_to t('meetings'), meetings_path, class: "btn btn-link" %>
+<%= link_to t('log_out'), destroy_user_session_path, class: "btn btn-link", :method =>'delete' %>
