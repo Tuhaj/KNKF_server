@@ -30,6 +30,7 @@ class ReadingsController < ApplicationController
   end
 
   def update
+    redirect_to readings_path
   end
 
   def destroy

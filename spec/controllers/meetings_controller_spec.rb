@@ -2,27 +2,16 @@ require 'spec_helper'
 
 
 describe MeetingsController do
-  
-    # This should return the minimal set of attributes required to create a valid
-  # Category. As you add validations to Category, be sure to
-  # adjust the attributes here as well.
   let(:valid_attributes) { { "name" => "MyString" } }
-
-  
   let(:meeting) { create(:meeting)}
   let!(:user) { create(:user) }
+  
   before(:each) do
     unless example.metadata[:skip_before]
       sign_in user
     end
   end
 
-
-  # debugger
-  # puts assigns[:meeting].inspect
-  # This should return the minimal set of values that should be in the session
-  # in order to pass any filters (e.g. authentication) defined in
-  # CategoriesController. Be sure to keep this updated too.
 
   describe "GET 'index'" do     
     it "returns http success" do
@@ -73,16 +62,18 @@ describe MeetingsController do
 
   describe "'update own meeting'" do
     it "returns http success" do
-    meeting = create(:meeting, user: user)
-    (post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id)
-    response.should be_redirect
+      meeting = create(:meeting, user: user)
+      (post 'update', :meeting => {name: "changed", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id)
+      response.should be_redirect
+      expect(Meeting.first.name).to eql "changed" 
+
     end
   end
 
   describe "'update alien meeting'" do
-  it "returns http success" do
-    expect {post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id}.to raise_error{CanCan::AccessDenied}
-  end
+    it "returns http success" do
+      expect {post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id}.to raise_error{CanCan::AccessDenied}
+    end
 end
 
   describe "destroy'" do

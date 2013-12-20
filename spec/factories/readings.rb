@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :reading do
-    title "Wiedza"
+    sequence(:title) { |n| "Wiedza cz. #{n}" }
     author "Martin Heidegger"
   end
 end

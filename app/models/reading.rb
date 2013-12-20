@@ -2,6 +2,9 @@ class Reading < ActiveRecord::Base
   belongs_to :meeting
   has_many :users
   belongs_to :user
+  validates :title, presence: true, uniqueness: true
+  validates :author, presence: true 
+  #validates_uniqueness_of :title => { :message => "Podana książka już istnieje" }
 
   before_destroy :cancel_votes_for_this_reading
 
