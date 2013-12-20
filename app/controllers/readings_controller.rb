@@ -30,7 +30,12 @@ class ReadingsController < ApplicationController
   end
 
   def update
-    redirect_to readings_path
+    @reading.update(reading_params)
+    if @reading.save
+      redirect_to readings_path, notice: 'Poprawiono dane lektury.'
+    else
+      render action: 'edit'
+    end
   end
 
   def destroy

@@ -1,13 +1,12 @@
 require 'spec_helper'
 
 describe ReadingsController do
-
-  before :each do
-    @user = create(:user)
-    @reading = create(:reading, user_id: @user.id)
-    sign_in :user, @user
-    controller.stub(:current_user).and_return(@user)
-  end
+    let(:reading) {create(:reading)}
+    before :each do
+        @user = create(:user)
+        sign_in :user, @user
+        controller.stub(:current_user).and_return(@user)
+    end
 
   context 'checks response for actions' do
     describe "GET 'index'" do
@@ -19,7 +18,7 @@ describe ReadingsController do
 
     describe "GET 'show'" do
       it "returns http success" do
-        get :show, id: @reading.id
+        get :show, id: reading.id
         response.should be_success
       end
     end
@@ -41,16 +40,16 @@ describe ReadingsController do
 
     describe "GET 'edit'" do
       it "can be edited" do
-        (get 'edit', id: @reading.id).should be_success
+        (get 'edit', id: reading.id).should be_success
       end
     end
 
     describe "update own reading" do
       it "allows to update" do
         reading = create(:reading, user: @user)
-        (post 'update', reading: {title: "Wiedza", author: "Changer"}, id: reading.id)
+        (patch 'update', reading: {title: "Wiedza", author: "Changer"}, id: reading.id)
         response.should be_redirect
-        expect(Reading.last.author).to eql "Changer"
+        expect(Reading.last.author).to eq "Changer"
       end
     end
 
