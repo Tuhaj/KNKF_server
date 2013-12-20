@@ -9,9 +9,8 @@ describe MeetingsController do
   let(:valid_attributes) { { "name" => "MyString" } }
 
   
-  let!(:meeting) { create(:meeting)}
+  let(:meeting) { create(:meeting)}
   let!(:user) { create(:user) }
-  let!(:url) { "/meetings/#{meeting.id}" }
   before(:each) do
     unless example.metadata[:skip_before]
       sign_in user
@@ -50,7 +49,6 @@ describe MeetingsController do
     it "created successfully" do
       post 'create', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}
       created_meeting = Meeting.last.name
-      puts response.status
       response.code.should eql("302") 
       created_meeting.should eql("Heidi")
     end
@@ -59,6 +57,7 @@ describe MeetingsController do
   describe "edit for knkf users" do
 
     it "KNKF user can edit meetings" do
+      meeting = create(:meeting, user: user)
       (get 'edit', id: meeting.id).should be_success
     end
   end
@@ -74,25 +73,24 @@ describe MeetingsController do
 
   describe "'update own meeting'" do
     it "returns http success" do
-      post 'create', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}
-      assigns[:meeting]
-      (post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id).should be_success
+    meeting = create(:meeting, user: user)
+    (post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id)
+    response.should be_redirect
     end
   end
 
   describe "'update alien meeting'" do
   it "returns http success" do
-    assigns[:meeting]
-    (post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id).should_not be_success
+    expect {post 'update', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}, id: meeting.id}.to raise_error{CanCan::AccessDenied}
   end
 end
 
-  describe "GET 'destroy'" do
+  describe "destroy'" do
     it "returns http success" do
-      post 'create', :meeting => {name: "Heidi", date: Date.parse("2015-12-12"), description:"Illogical but interesting"}
-      meeting = Meeting.last
-debugger
-      (delete 'destroy', meeting.id).should be_success
+      meeting = create(:meeting, user: user)
+      delete 'destroy', id: meeting.id
+      response.should be_redirect
+      Meeting.exists?(meeting).should be_false
     end
   end
 end

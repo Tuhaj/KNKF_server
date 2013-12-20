@@ -11,7 +11,7 @@ class Ability
       can :destroy, Meeting, user_id: user.id
       can :edit, Meeting, user_id: user.id
       can :create, Meeting
-      can :update, Meeting
+      can :update, Meeting, user_id: user.id
     end
   end
 end
