@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
 
-  before_filter :authenticate_user!, only: [:new, :index, :show, :edit, :update, :my, :add_me, :remove_me, :end_voting]
+  before_filter :authenticate_user!, except: [:index]
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
   before_action :find_meeting, only: [:add_me,:remove_me, :end_voting]
 

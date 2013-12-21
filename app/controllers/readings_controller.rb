@@ -1,5 +1,5 @@
 class ReadingsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :index, :show, :edit, :update, :vote, :unvote]
+  before_filter :authenticate_user!, except: [:index, :show]
   before_action :set_reading, only: [:show, :edit, :update, :destroy] 
   before_action :set_reading_id, only: [:vote, :unvote]
   
