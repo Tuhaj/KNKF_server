@@ -4,7 +4,7 @@ require 'spec_helper'
 describe MeetingsController do
   let(:valid_attributes) { { "name" => "MyString" } }
   let(:meeting) { create(:meeting)}
-  let!(:user) { create(:user) }
+  let(:user) { create(:user) }
   
   before(:each) do
     unless example.metadata[:skip_before]

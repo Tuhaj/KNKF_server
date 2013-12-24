@@ -34,7 +34,7 @@ describe ReadingsController do
       it "returns http success" do
         post 'create', :reading => {title: "Wola Mocy", author: "Nietzsche"}
         reading = Reading.where(title: "Wola Mocy").first
-        Reading.exists?(reading).should
+        Reading.exists?(reading).should be_true
       end
     end
 
@@ -53,11 +53,13 @@ describe ReadingsController do
       end
     end
 
-    # describe "GET 'destroy'" do
-    #   it "returns http success" do
-    #     get 'destroy'
-    #     response.should be_success
-    #   end
-    # end
+    describe "destroy own reading" do
+      it "allows to destroy" do
+        reading = create(:reading, user: @user)
+        delete 'destroy', id: reading.id
+        response.should be_redirect
+        Reading.exists?(reading).should be_false
+      end
+    end
   end
 end
