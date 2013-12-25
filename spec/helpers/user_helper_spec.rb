@@ -11,5 +11,8 @@ require 'spec_helper'
 #   end
 # end
 describe UserHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "displays for various users" do
+  end
+  describe "meeting methods" do
+  end
 end
