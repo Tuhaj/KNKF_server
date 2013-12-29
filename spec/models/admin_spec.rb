@@ -1,16 +1,8 @@
 require 'spec_helper'
 
 describe "Model Admin" do
-
-		before(:all) do
-		@admin = Admin.new email:"zrazic@wp.pl", password:"asdasdasd"
-	end
-
-	it "Admin can be created" do
-  	admin = @admin
-  	@admin.email.should == 'zrazic@wp.pl'
-  	@admin.password.should == 'asdasdasd'
-
-	end
-
+	let(:admin) {create(:admin)}
+  subject {admin}
+  its(:email) {should == 'zrazic@wp.pl'}
+  its(:password) {should == 'secretly_created'}
 end
