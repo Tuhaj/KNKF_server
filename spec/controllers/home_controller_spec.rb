@@ -1,6 +1,5 @@
 require 'spec_helper'
 
-
 describe HomeController do
   let(:user) { create(:user) }
   let(:admin) { create(:admin)}
@@ -19,7 +18,6 @@ describe HomeController do
       response.should be_success
     end
   end
-
 
   describe "if logged in as admin redirects to admin panel" do
     it "returns http success" do
