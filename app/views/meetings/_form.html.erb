@@ -11,7 +11,7 @@
   <% end %>
 <p><%= t('meeting.form_incentive') %></p>
 <p> <%= t('meeting.name') %> <%= f.text_field :name, class: "form-control-static" %> </p>
-<p> <%= t('date') %> <%= f.text_field :date, class: "form-control-static datepicker" %> </p>
+<p> <%= t('date') %> <%= f.date_field :date, class: "form-control-static"%> </p>
 <p> <%= t('description') %> <%= f.text_area :description, class: "form-control-static" %> </p>
 	  		<%= f.submit t("meeting.submit") %>
 <% end %>
