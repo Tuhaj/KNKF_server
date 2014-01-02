@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
 
   def send_welcome_mail
     UserMailer.welcome_mail(self).deliver
+    true
   end
 
   def current_admin
