@@ -8,6 +8,7 @@ KNKF::Application.routes.draw do
       resources :meetings, :readings
     end
   end
+  resources :evernote
 
   resources :readings do
     post "vote"
@@ -27,6 +28,8 @@ KNKF::Application.routes.draw do
   get "home/about_us"
   get "messages/new"
   post "messages/create"
+  get "notes/new"
+  post "notes/create"
   
   devise_for :users
   devise_for :admins, path: :moderators

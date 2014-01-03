@@ -9,13 +9,8 @@
   <tr><td><%= reading_status(@reading) %></td></tr>
 
 </table>
+<%= link_to "notatka", notes_new_path, class: "btn btn-link" %>
 
-   
-  <p> Dodaj notatkę: </p>
-  <p ><%= text_area :note, class: "form-control-static", size: "40x10"%> </p>
-  <%= button_tag(type: 'button') do %>
-    <%= content_tag(:strong, 'dodaj') %>
-  <% end %>
   <br>
   <br>
   <%= link_to t('readings'), readings_path, class: "btn btn-link" %>
