@@ -14,5 +14,6 @@
 
   <p> <%= "note title" %> <%= f.text_field :title, class: "form-control-static" %> </p>
   <p><%= "note text" %> <%= f.text_area :content, class: "form-control-static", size: "40x10"%> </p>
+  <%= f.hidden_field :reading_id, value: params[:reading_id], class: "form-control-static" %>
   <%= f.submit "add note to evernote", class: "btn btn-link" %>
 <% end %>
