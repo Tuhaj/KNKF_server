@@ -29,7 +29,12 @@ KNKF::Application.routes.draw do
   get "messages/new"
   post "messages/create"
   get "notes/new"
+  get "notes/oauth_callback"
   post "notes/create"
+#these are for evernote:
+  get '/auth/evernote/callback' => 'login#callback'
+  get '/logout' => 'login#logout', :as => 'logout'
+  get '/oauth_failure' => 'login#oauth_failure'
   
   devise_for :users
   devise_for :admins, path: :moderators
