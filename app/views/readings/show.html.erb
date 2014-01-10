@@ -9,4 +9,8 @@
   <tr><td><%= reading_status(@reading) %></td></tr>
 
 </table>
-<%= link_to t('readings'), readings_path, class: "btn btn-link" %>
+<%= link_to "notatka", new_reading_note_path(:reading_id => @reading.id), class: "btn btn-link" %>
+
+  <br>
+  <br>
+  <%= link_to t('readings'), readings_path, class: "btn btn-link" %>

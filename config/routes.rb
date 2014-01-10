@@ -8,11 +8,17 @@ KNKF::Application.routes.draw do
       resources :meetings, :readings
     end
   end
+  resources :evernote
 
   resources :readings do
     post "vote"
-    post "unvote"
+    post "unvote"  
+    resources :notes, :only => [:new, :create] do
+      member do
+        get "oauth_callback"
+      end
     end
+  end
   resources :meetings do
     post "add_me"
     delete "remove_me"
@@ -22,11 +28,17 @@ KNKF::Application.routes.draw do
     end
   end
 
+
+
   get "home/index"
   get "user/edit"
   get "home/about_us"
   get "messages/new"
   post "messages/create"
+#these are for evernote:
+  get '/auth/evernote/callback' => 'login#callback'
+  get '/logout' => 'login#logout', :as => 'logout'
+  get '/oauth_failure' => 'login#oauth_failure'
   
   devise_for :users
   devise_for :admins, path: :moderators

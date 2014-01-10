@@ -15,7 +15,11 @@ class NotesController < ApplicationController
 
  #     auth_token = "S=s1:U=8d910:E=14aa5c00ee7:C=1434e0ee2e9:P=1cd:A=en-devtoken:V=2:H=f1e3575f9b4a41562505846d4e8756be"
       client = EvernoteOAuth::Client.new
+<<<<<<< HEAD
       session[:rt] = request_token = client.request_token(:oauth_callback => "http://localhost:3000/notes/oauth_callback")
+=======
+      request_token = client.request_token(:oauth_callback => oauth_callback_reading_note_url(@reading, @note))
+>>>>>>> evernote
       url = request_token.authorize_url
       
       
@@ -39,10 +43,26 @@ class NotesController < ApplicationController
   end
 
   def oauth_callback
+<<<<<<< HEAD
     token = params[:oauth_token]
     client = EvernoteOAuth::Client.new
     
     at = session[:rt].get_access_token()
+=======
+    @note = Note.find(params[:id]) 
+    session[:token] = token = params[:oauth_token]
+    client = EvernoteOAuth::Client.new(token: token)
+    note_store = client.note_store
+    notebooks = note_store.listNotebooks
+    note = Evernote::EDAM::Type::Note.new
+    note.title = "#{@note.title}"
+    part1 = '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE en-note SYSTEM "http://xml.evernote.com/pub/enml2.dtd"><en-note>'
+    part2 = '<br/></en-note>'
+    note.content =  part1 + @note.content + part2
+    note_store.createNote(note)
+
+    redirect_to @reading, :notice => "Udało się dodać notatkę"
+>>>>>>> evernote
   end
 
 private

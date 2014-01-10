@@ -1,6 +1,7 @@
 class Reading < ActiveRecord::Base
   belongs_to :meeting
   has_many :users
+  has_many :notes
   belongs_to :user
   validates :title, presence: true, uniqueness: true
   validates :author, presence: true 

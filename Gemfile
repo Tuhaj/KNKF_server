@@ -22,6 +22,10 @@ gem "devise", "~> 3.2.1"
 
 gem 'cancan'
 
+gem 'evernote_oauth'
+
+gem 'newrelic_rpm'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do

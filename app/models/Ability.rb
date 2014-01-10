@@ -12,6 +12,7 @@ class Ability
       can :edit, Meeting, user_id: user.id
       can :create, Meeting
       can :update, Meeting, user_id: user.id
+      can :create, Note
     end
   end
 end
