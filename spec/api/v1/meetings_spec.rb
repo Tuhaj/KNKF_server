@@ -52,7 +52,6 @@ describe "/api/v1/meetings" do
       meeting: {name: "Test_Created_Meeting", date: "2014-12-12"}
 
       meeting = Meeting.find_by_name!("Test_Created_Meeting")
-      puts meeting.inspect
       route = "/api/v1/meetings/#{meeting.id}"
 
       response.status.should eql(201)

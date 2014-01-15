@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Model User" do
 	let!(:user) {create(:user)}
-	let(:mail) {stub(deliver: true)}
+	let(:mail) {double(deliver: true)}
 	it "User can be created" do
 		@user = User.new
 		@user.email = "tester@wp.pl"
