@@ -1,6 +1,14 @@
 class NotesController < ApplicationController
   before_filter :authenticate_user!
   require 'evernote_oauth'
+  
+  def index
+    @notes = Note.all
+  end
+
+  def show
+  
+  end
 
   def new
     @note = Note.new
@@ -16,10 +24,12 @@ class NotesController < ApplicationController
       unless access_token.nil?
         client = EvernoteOAuth::Client.new(token: access_token)
         create_note(client, @reading, @note)
+        debugger
         redirect_to @reading, :notice => "Udało się dodać notatkę"
       else
         client = EvernoteOAuth::Client.new
         session[:request_token] = request_token = client.request_token(:oauth_callback => oauth_callback_reading_note_url(@reading, @note))
+        debugger
         redirect_to request_token.authorize_url
       end
     else

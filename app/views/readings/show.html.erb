@@ -9,7 +9,8 @@
   <tr><td><%= reading_status(@reading) %></td></tr>
 
 </table>
-<%= link_to "notatka", new_reading_note_path(:reading_id => @reading.id), class: "btn btn-link" %>
+<%= link_to "zobacz notatki", reading_notes_path(:reading_id => @reading.id), class: "btn btn-link" %>
+<%= link_to "dodaj notatkę Evernote", new_reading_note_path(:reading_id => @reading.id), class: "btn btn-link" %>
 
   <br>
   <br>

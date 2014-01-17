@@ -13,7 +13,7 @@ KNKF::Application.routes.draw do
   resources :readings do
     post "vote"
     post "unvote"  
-    resources :notes, :only => [:new, :create] do
+    resources :notes, :only => [:new, :create, :index] do
       member do
         get "oauth_callback"
       end
