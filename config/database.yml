@@ -5,10 +5,9 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  encoding: UTF8
+  encoding: unicode
   database: knkf_development
   pool: 5
-  username: vagrant
   
 
 # Warning: The database defined as "test" will be erased and
@@ -19,7 +18,7 @@ test:
   encoding: UTF8
   database: knkf_development_test
   pool: 5
-  username: vagrant
+
 production:
   adapter: postgresql
   encoding: UTF8
