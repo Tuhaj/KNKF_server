@@ -4,6 +4,8 @@ gem 'rails', '4.0.1'
 
 gem 'pg'
 
+gem 'capistrano-rails'
+
 gem 'rails_admin'
 
 gem 'sass-rails', '~> 4.0.0'
