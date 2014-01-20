@@ -3,12 +3,12 @@ lock '3.1.0'
 
 set :application, 'KNKF_server'
 set :repo_url, 'git@github.com:Tuhaj/KNKF_server.git'
-
+set :unicorn_pid, proc { "#{shared_path}/tmp/pids/unicorn.pid" }
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app
-# set :deploy_to, '/var/www/my_app'
+set :deploy_to, '/home/vagrant/app'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -38,10 +38,17 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
+    task :stop do
+      execute "if [ -f #{shared_path}/tmp/pids/unicorn.pid ]; then kill `cat #{shared_path}/tmp/pids/unicorn.pid`; fi"
+    end
     on roles(:app), in: :sequence, wait: 5 do
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
+    task :start do
+      execute "fi && cd #{current_path}; unicorn_rails -c #{shared_path}/config/unicorn.rb -D"
+    end
+
   end
 
   after :publishing, :restart
@@ -52,6 +59,7 @@ namespace :deploy do
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
+ 
     end
   end
 
