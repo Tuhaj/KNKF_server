@@ -46,9 +46,8 @@ namespace :deploy do
       # execute :touch, release_path.join('tmp/restart.txt')
     end
     task :start do
-      execute "fi && cd #{current_path}; unicorn_rails -c #{shared_path}/config/unicorn.rb -D"
+      execute "unicorn_rails -c #{shared_path}/config/unicorn.rb -D"
     end
-
   end
 
   after :publishing, :restart
