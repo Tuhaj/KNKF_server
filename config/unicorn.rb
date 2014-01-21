@@ -8,6 +8,6 @@
 
 listen 3000 # by default Unicorn listens on port 8080
 worker_processes 2 # this should be >= nr_cpus
-pid "./tmp/pids/unicorn.pid"
+pid "/home/vagrant/app/shared/tmp/pids/unicorn.pid"
 stderr_path "./log/unicorn.log"
 stdout_path "./log/unicorn.log"
