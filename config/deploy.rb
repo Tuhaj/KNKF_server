@@ -38,15 +38,9 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
-    task :stop do
-      execute "if [ -f #{shared_path}/tmp/pids/unicorn.pid ]; then kill `cat #{shared_path}/tmp/pids/unicorn.pid`; fi"
-    end
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
-    end
-    task :start do
+      execute "if [ -f #{shared_path}/tmp/pids/unicorn.pid ]; then kill -9`cat #{shared_path}/tmp/pids/unicorn.pid`; fi"
       execute "unicorn_rails -c #{shared_path}/config/unicorn.rb -D"
+    on roles(:app), in: :sequence, wait: 5 do
     end
   end
 
