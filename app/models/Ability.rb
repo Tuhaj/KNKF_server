@@ -15,4 +15,5 @@ class Ability
       can :create, Note
     end
   end
+  #ability not Ability!
 end
