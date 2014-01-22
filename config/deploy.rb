@@ -39,7 +39,7 @@ namespace :deploy do
   desc 'Restart application'
   task :stop do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "if [ -f #{shared_path}/tmp/pids/unicorn.pid ]; then kill -9 `cat #{shared_path}/tmp/pids/unicorn.pid`; fi"
+      execute "if [ -f #{shared_path}/tmp/pids/unicorn.pid ]; then kill -s QUIT `cat #{shared_path}/tmp/pids/unicorn.pid`; fi"
     end
   end
 
