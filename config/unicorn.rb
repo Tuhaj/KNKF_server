@@ -11,3 +11,9 @@ worker_processes 2 # this should be >= nr_cpus
 pid "/home/vagrant/app/shared/tmp/pids/unicorn.pid"
 stderr_path "./log/unicorn.log"
 stdout_path "./log/unicorn.log"
+
+# Help ensure your application will always spawn in the symlinked
+# "current" directory that Capistrano sets up.
+working_directory '/home/vagrant/app/current'
+#not tested yet
+listen "/home/vagrant/app/shared/tmp/sockets/unicorn.sock", :backlog => 64
