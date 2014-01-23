@@ -6,7 +6,7 @@
 # See also http://unicorn.bogomips.org/examples/unicorn.conf.rb for
 # a more verbose configuration using more features.
 
-listen 3000 # by default Unicorn listens on port 8080
+# listen 3000 # by default Unicorn listens on port 8080 I comment it out so gets request from NginX
 worker_processes 2 # this should be >= nr_cpus
 pid "/home/vagrant/app/shared/tmp/pids/unicorn.pid"
 stderr_path "./log/unicorn.log"
