@@ -7,7 +7,7 @@
 # a more verbose configuration using more features.
 
 # listen 3000 # by default Unicorn listens on port 8080 I comment it out so gets request from NginX
-worker_processes 2 # this should be >= nr_cpus
+worker_processes 2# this should be >= nr_cpus
 pid "/home/vagrant/app/shared/tmp/pids/unicorn.pid"
 stderr_path "./log/unicorn.log"
 stdout_path "./log/unicorn.log"
@@ -17,3 +17,10 @@ stdout_path "./log/unicorn.log"
 working_directory '/home/vagrant/app/current'
 #not tested yet
 listen "/home/vagrant/app/shared/tmp/sockets/unicorn.sock", :backlog => 64
+
+#unicorn workers pids in ~/app/shared/tmp/pids/ directory
+after_fork do |server, worker|
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
+  child_pid = server.config[:pid].sub('.pid', ".#{worker.nr}.pid")
+  system("echo #{Process.pid} > #{child_pid}")
+end

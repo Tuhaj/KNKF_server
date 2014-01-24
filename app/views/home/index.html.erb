@@ -6,5 +6,11 @@
 <br>
 <br>
 <br>
+<%if user_signed_in? %>
 <%= link_to t('meetings'), meetings_path, class: "btn btn-link" %>
+<% end %>
+<%if user_signed_in? %>
 <%= link_to t('log_out'), destroy_user_session_path, class: "btn btn-link", :method =>'delete' %>
+<% else %>
+<%= link_to t('log_in'), new_user_session_path, class: "btn btn-link" %>
+<% end %>
