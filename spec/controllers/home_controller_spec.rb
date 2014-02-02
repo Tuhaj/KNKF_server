@@ -7,7 +7,7 @@ describe HomeController do
   describe "for not signed in user should redirect" do
     it "returns http success" do
       get 'index'
-      response.should redirect_to(new_user_session_path)
+      response.should be_success
     end
   end
 
