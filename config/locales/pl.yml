@@ -1,4 +1,5 @@
 pl:
+  log_in: "zaloguj"
   send: "Wyślij"
   name: "Nazwa"
   date: "Data"

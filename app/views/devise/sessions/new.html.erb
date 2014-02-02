@@ -1,5 +1,5 @@
 <h2>Zaloguj się</h2>
-<h2><%= Process.pid %></h2>
+<!-- <h2><%= Process.pid %></h2> this is to check process pids (eq if unicorns are changing-->
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label "Adres email" %><br />
   <%= f.email_field :email, :autofocus => true %></div>

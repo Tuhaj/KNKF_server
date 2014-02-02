@@ -41,11 +41,8 @@
       <navbar class="navbar-form navbar-left"></navbar>
       <navbar class="navbar-form navbar-right">
 
-      <% if current_user.knkf_member %>
-        <div class="form-group" title= <%= t('knkf_permissions')%> id="member"><%= current_user.full_name %>, <%= t 'log_in_as_knkf' %> <%= current_user.id %> </div>
-        <% else %>
-        <div class="form-group" title= <%= t('guest_permissions')%> id="guest"> <%= current_user.full_name %>, <%= t 'log_in_as_guest' %> <%= current_user.id %> </div>
-      <% end %>
+
+        <div class="form-group" title= <%= permitions_title %> id="user_type"><%= current_user.full_name %>, <%= display_login_button %> </div>
       <li class="dropdown form-group">
         <a class="dropdown-toogle" data-toggle='dropdown' href='#'> <%= t 'account' %> <span class='caret'></span></a>
         <ul class="dropdown-menu">
