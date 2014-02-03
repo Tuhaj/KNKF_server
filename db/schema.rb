@@ -31,30 +31,6 @@ ActiveRecord::Schema.define(version: 20140103111606) do
     t.datetime "updated_at"
   end
 
-  create_table "bonus", id: false, force: true do |t|
-    t.string  "ename", limit: 10
-    t.string  "job",   limit: 9
-    t.integer "sal"
-    t.integer "comm"
-  end
-
-  create_table "dept", id: false, force: true do |t|
-    t.integer "deptno"
-    t.string  "dname",  limit: 14
-    t.string  "loc",    limit: 13
-  end
-
-  create_table "emp", id: false, force: true do |t|
-    t.integer "empno",               null: false
-    t.string  "ename",    limit: 10
-    t.string  "job",      limit: 9
-    t.integer "mgr"
-    t.date    "hiredate"
-    t.integer "sal"
-    t.integer "comm"
-    t.integer "deptno"
-  end
-
   create_table "lectures", force: true do |t|
     t.string   "subject"
     t.string   "place"
@@ -144,12 +120,6 @@ ActiveRecord::Schema.define(version: 20140103111606) do
   end
 
   add_index "readings", ["user_id"], name: "index_readings_on_user_id", using: :btree
-
-  create_table "salgrade", id: false, force: true do |t|
-    t.integer "grade"
-    t.integer "losal"
-    t.integer "hisal"
-  end
 
   create_table "users", force: true do |t|
     t.string   "full_name"
