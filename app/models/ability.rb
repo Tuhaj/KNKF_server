@@ -4,6 +4,9 @@ class Ability
   def initialize(user)
     can :read, :all
     can :show, :all
+    can :remove_me, Meeting, user_id: user.id
+    can :add_me, Meeting, user_id: user.id 
+    
     if user.knkf_member?
       can :destroy, Reading, user_id: user.id
       can :edit, Reading, user_id: user.id
@@ -13,8 +16,6 @@ class Ability
       can :create, Meeting
       can :update, Meeting, user_id: user.id
       can :create, Note
-      can :remove_me, Meeting, user_id: user.id
-      can :add_me, Meeting, user_id: user.id 
     end
   end
   #ability not Ability!
