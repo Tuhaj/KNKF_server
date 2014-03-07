@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :readings
 
   before_save :ensure_authentication_token
-  before_create :set_vote 
+  before_create :set_vote
   after_create :send_welcome_mail
 
   def send_welcome_mail
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   def set_vote
     self.has_a_vote = true
   end
-
+# TODO: remove and check
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token

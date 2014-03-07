@@ -4,7 +4,7 @@ KNKF::Application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.assets.compile = true 
+  config.assets.compile = true
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both thread web servers
@@ -15,7 +15,7 @@ KNKF::Application.configure do
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
-  config.action_mailer.default_url_options = { :host => 'koloksztalceniafilozoficznego.heroku.com' }
+  config.action_mailer.default_url_options = { :host => 'knkf.herokuapp.com' }
 
  config.action_mailer.delivery_method = :smtp
  config.action_mailer.perform_deliveries = true

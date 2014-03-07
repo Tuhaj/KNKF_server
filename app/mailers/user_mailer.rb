@@ -2,13 +2,13 @@ class UserMailer < ActionMailer::Base
   default from: "knkf.uw@gmail.com"
 
 
-    def welcome_mail(user)
+  def welcome_mail(user)
   	@user = user
   	mail to: @user.email, subject: "Potwierdzenie rejestracji"
   end
 
-  	def application_mail(user)
-  		@user = user
-  		mail to: "piotr.zientara1@gmail.com", subject: "Wiadomość do administratora"
-  	end
+	def application_mail(user)
+		@user = user
+		mail to: "piotr.zientara1@gmail.com", subject: "Wiadomość do administratora"
+	end
 end
