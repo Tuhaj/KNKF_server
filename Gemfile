@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rack-test'
   gem 'capybara'
   gem 'debugger'
+  gem 'rails_best_practices'
 end
 
 gem 'jbuilder', '~> 1.2'

@@ -1,8 +1,8 @@
 class ReadingsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_action :set_reading, only: [:show, :edit, :update, :destroy] 
+  before_action :set_reading, only: [:show, :edit, :update, :destroy]
   before_action :set_reading_id, only: [:vote, :unvote]
-  
+
   def index
     @readings = Reading.all
   end
@@ -45,7 +45,7 @@ class ReadingsController < ApplicationController
   end
 
   def vote
-    @reading.votes_for = @reading.votes_for + 1 
+    @reading.votes_for = @reading.votes_for + 1
     @reading.save!
     current_user.has_a_vote = false
     current_user.reading = @reading
@@ -54,7 +54,7 @@ class ReadingsController < ApplicationController
   end
 
   def unvote
-    @reading.votes_for = @reading.votes_for - 1 
+    @reading.votes_for = @reading.votes_for - 1
     @reading.save!
     current_user.has_a_vote = true
     current_user.reading = nil
@@ -74,5 +74,5 @@ class ReadingsController < ApplicationController
   def reading_params
     params.require(:reading).permit(:author, :title, :description, :votes_for, :is_reworked, :meeting)
   end
-  
+
 end
