@@ -27,11 +27,9 @@ class User < ActiveRecord::Base
   def set_vote
     self.has_a_vote = true
   end
-# TODO: remove and check
+# TODO: remove and check  (checked, important for authentication)
   def ensure_authentication_token
-    if authentication_token.blank?
-      self.authentication_token = generate_authentication_token
-    end
+      self.authentication_token ||= generate_authentication_token
   end
 
   def generate_authentication_token
