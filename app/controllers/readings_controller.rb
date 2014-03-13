@@ -12,6 +12,7 @@ class ReadingsController < ApplicationController
 
   def new
     @reading = Reading.new
+    @reading_form = ReadingForm.new @reading
   end
 
   def create
@@ -27,11 +28,12 @@ class ReadingsController < ApplicationController
   end
 
   def edit
+    @reading_form = ReadingForm.new @reading
   end
 
   def update
-    @reading.update(reading_params)
-    if @reading.save
+    @reading_form = ReadingForm.new @reading
+    if @reading_form.update(reading_params)
       redirect_to readings_path, notice: 'Poprawiono dane lektury.'
     else
       render action: 'edit'

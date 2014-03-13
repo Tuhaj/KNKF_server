@@ -1,9 +1,19 @@
-<%= form_for @reading do |f| %>
-  <% if @reading.errors.any? %>
+<% if @reading_form.new_record? %>
+
+<% options = { url: readings_path, method: :post } %>
+
+<% else %>
+
+<% options = { url: reading_path(@reading_form.reading), method: :put } %>
+
+<% end %>
+
+<%= form_for :reading, options do |f| %>
+  <% if @reading_form.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@reading.errors.count, "error") %> uniemożliwiło dodanie nowej lektury</h2>
+      <h2><%= pluralize(@reading_form.errors.count, "error") %> uniemożliwiło dodanie nowej lektury</h2>
       <ul>
-        <% @reading.errors.full_messages.each do |msg| %>
+        <% @reading_form.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
