@@ -11,16 +11,12 @@ class ReadingsController < ApplicationController
   end
 
   def new
-    @reading = Reading.new
-    @reading_form = ReadingForm.new @reading
+    @reading_form = NewReadingForm.new(current_user)
   end
 
   def create
-    @reading = Reading.new(reading_params)
-    @reading.user = current_user
-    @reading.votes_for = 0
-    @reading.is_reworked = false
-    if @reading.save
+    @reading_form = NewReadingForm.new(current_user)
+    if @reading_form.update(reading_params)
       redirect_to readings_path, :notice => "Udało się dodać lekturę"
     else
       render :new
