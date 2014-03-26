@@ -1,6 +1,5 @@
 class Api::V1::MeetingsController < Api::V1::BaseController
 
-  
   authorize_resource
 
   def index
@@ -25,5 +24,5 @@ class Api::V1::MeetingsController < Api::V1::BaseController
   def meeting_params
     params.require(:meeting).permit(:name, :description, :date, :users)
   end
-  
+
 end

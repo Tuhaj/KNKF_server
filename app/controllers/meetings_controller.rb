@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index]
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-  before_action :find_meeting, only: [:add_me,:remove_me, :end_voting]
+  before_action :find_meeting, only: [:add_me, :remove_me, :end_voting]
 
 authorize_resource
 
@@ -39,7 +39,7 @@ authorize_resource
   def update
     @meeting.update(meeting_params)
     if @meeting.save
-      redirect_to @meeting, notice: 'Poprawiono dane spotkania.' 
+      redirect_to @meeting, notice: 'Poprawiono dane spotkania.'
     else
       render action: 'edit'
     end
@@ -50,7 +50,7 @@ authorize_resource
     redirect_to meetings_path
   end
 
-  def add_me      
+  def add_me
     @meeting.users << current_user
     redirect_to @meeting
   end
@@ -73,7 +73,7 @@ authorize_resource
 
   def find_meeting
     @meeting = Meeting.find(params[:meeting_id])
-  end 
+  end
 
   def meeting_params
     params.require(:meeting).permit(:name, :description, :date, :users)
